@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <div className="">
             <button
-                className="hamburger-icon md:hidden"
+                className="z-50 hamburger-icon md:hidden"
                 onClick={toggleMenu}
                 aria-label="Toggle Menu"
             >
@@ -42,39 +42,44 @@ const Navbar = () => {
                     }`}
             >
                 <li>
+                    <div className="">
+                        <img className='scale-50' src="../src/assets/logo.jpg" alt="" />
+                    </div>
+                </li>
+                <li>
                     <a
-                        className="text-gray-900 text-lg font-semibold hover:text-indigo-600"
+                        className="text-gray-900 text-xl font-semibold hover:text-indigo-600"
                         href="#home"
                         onClick={toggleMenu}
                     >
-                        Home
+                        Startseite
                     </a>
                 </li>
                 <li>
                     <a
-                        className="text-gray-600 hover:text-indigo-600"
+                        className="text-gray-900 text-xl font-semibold hover:text-indigo-600"
                         href="#ausstattung"
                         onClick={toggleMenu}
                     >
-                        About
+                        Ausstattung
                     </a>
                 </li>
                 <li>
                     <a
-                        className="text-gray-600 hover:text-indigo-600"
+                        className="text-gray-900 text-xl font-semibold hover:text-indigo-600"
                         href="#preise"
                         onClick={toggleMenu}
                     >
-                        Services
+                        Preise und Buchungen
                     </a>
                 </li>
                 <li>
                     <a
-                        className="text-gray-600 hover:text-indigo-600"
+                        className="text-gray-900 text-xl font-semibold hover:text-indigo-600"
                         href="#contact"
                         onClick={toggleMenu}
                     >
-                        Contact
+                        Kontakt
                     </a>
                 </li>
             </ul>

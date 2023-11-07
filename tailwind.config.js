@@ -5,9 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '425px',
+    },
     extend: {
       backgroundImage: {
-        'parallax': 'url("../src/assets/wallpaper_usedom.jpg")',
+        'parallax': 'url("../src/assets/new-wallpaper-strand.jpg")',
         'logo': 'url("../src/assets/logo.jpg")',
       }
     },

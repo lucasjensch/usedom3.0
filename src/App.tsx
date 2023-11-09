@@ -132,8 +132,8 @@ function App() {
       </section>
 
       <section>
-        <div className='flex items-center justify-center h-96 bg-parallax bg-fixed bg-cover'>
-          <h2 className='text-black text-4xl font-bold'>Entspannen Sie sich und tanken Sie Sonne</h2>
+        <div className='flex items-center justify-center h-96 bg-parallax bg-fixed bg-cover p-5 break-words'>
+          <h2 className='text-white text-4xl font-extrabold'>Freuen Sie sich auf Strandspaziergänge</h2>
         </div>
       </section>
       <section id='preise' className='h-screen py-24'>
@@ -142,8 +142,9 @@ function App() {
           <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit</p>
         </div>
       </section>
+
       <section className="bg-white dark:bg-gray-900 py-24" id='contact'>
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-3xl -md">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontaktieren Sie uns</h2>
           <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit.</p>
           <form action="#" className="space-y-8">

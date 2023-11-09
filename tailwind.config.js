@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'parallax': 'url("../src/assets/new-wallpaper-strand.jpg")',
+        'parallax': 'url("../src/assets/seebruecke-wallpaper.jpg")',
         'logo': 'url("../src/assets/logo.jpg")',
       }
     },

@@ -7,6 +7,8 @@ export default {
   theme: {
     screens: {
       'xs': '425px',
+      'md': '768px',
+      'lg': '1024px',
     },
     extend: {
       backgroundImage: {

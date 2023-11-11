@@ -127,7 +127,7 @@ function App() {
               Mehr Über Uns
             </a>
           </div>
-          <div data-aos="fade-left">
+          <div data-aos="fade-left" data-aos-delay="200">
             <img className='scale-125 ' src="../src/assets/map.svg" alt="" />
           </div>
         </div>

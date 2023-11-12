@@ -202,10 +202,10 @@ function App() {
 
           <div className=" overflow-x-auto pb-10">
             <h2 className='text-2xl font-bold p-4'>Preistabelle 2023</h2>
-            <div className='mx-auto md:w-1/2'>
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <div className='mx-auto rounded-xl md:w-1/2'>
+              <table className="w-full  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
                   <tr>
                     <th scope="col" className="px-6 py-3">
                       von - bis
@@ -219,7 +219,7 @@ function App() {
                 <tbody>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      03.01. - 30.01.
                     </th>
                     <td className="px-6 py-4">
                       85€
@@ -227,66 +227,66 @@ function App() {
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      30.01. - 25.03.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      90€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      25.03. - 28.04.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      95€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      28.04. - 18.06.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      130€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      18.06. - 10.09.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      186€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      10.09. - 08.10.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      130€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      08.10 - 05.11.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      95€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      05.11. - 22.12.
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      90€
                     </td>
                   </tr>
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01 - 30.01.
+                      22.12. - 03.01.2024
                     </th>
                     <td className="px-6 py-4">
-                      85€
+                      190€
                     </td>
                   </tr>
                 </tbody>
@@ -299,10 +299,12 @@ function App() {
               Die Usedomperle - Direkt am Strand
             </a>
           </div>
-
-          <div id="fhm-price-calculator-47780">
-            <a href="https://www.ferienhausmiete.de/47780.htm" target="_blank">Die Usedomperle - Direkt am Strand</a>
+          <div id='booking'>
+            <div id="fhm-price-calculator-47780">
+              <a href="https://www.ferienhausmiete.de/47780.htm" target="_blank">Die Usedomperle - Direkt am Strand</a>
+            </div>
           </div>
+
         </div>
 
       </section>
@@ -318,7 +320,7 @@ function App() {
             für Sie aufgelistet, die die Erfahrung in der Usedomperle am besten beschreiben. Scheuen Sie also nicht und schreibe auch Sie gern eine Rezension.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 text-center mx-auto max-w-3xl md:grid-cols-2 py-8">
+        <div className="grid grid-cols-1 gap-6 text-center mx-auto max-w-3xl md:grid-cols-2 py-8" data-aos="fade-left">
 
           <div className="bg-gray-100 p-6 rounded-xl shadow-lg shadow-black/30 mb-12 md:mb-0 w-60 justify-center items-center mx-auto">
             <div className="mb-6 flex justify-center">
@@ -529,7 +531,7 @@ function App() {
           </li>
         </ul>
 
-        <div className="h-24 md:h-36 w-full mx-auto max-w-screen-xl p-4 flex items-end justify-center">
+        <div className="h-24 w-full mx-auto max-w-screen-xl p-4 flex items-end justify-center">
 
           <span className="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a href="https://aecht.media" target="_blank" className="hover:none text-indigo-700 font-bold">ächtmedia™</a>. Alle Rechte vorbehalten.
           </span>

@@ -49,6 +49,9 @@ function App() {
 
   const [popup, openPopup] = React.useState(false);
 
+  const [table2023, closeTable] = React.useState(true);
+  const [table2024, openTable] = React.useState(false);
+
   const mybutton: ButtonElement | null = document.getElementById("btn-back-to-top");
 
 
@@ -69,6 +72,8 @@ function App() {
   mybutton?.addEventListener("click", backToTop);
 
   window.addEventListener("scroll", scrollFunction);
+
+  const [currentYear, changeYear] = React.useState("2023");
 
   return (
     <>
@@ -196,102 +201,206 @@ function App() {
 
           <div>
             <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Preise & Belegung</h2>
-            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit</p>
+            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+              Ob Kurzurlaub oder längere Aufenthalte – finden Sie das perfekte Angebot für Ihren Ostseeurlaub.
+              Planen Sie Ihre Auszeit in der "Usedomperle" und sichern Sie sich Ihr Stück Inselglück! Wir freuen uns darauf, Sie bald bei uns begrüßen zu dürfen!
+            </p>
           </div>
 
 
           <div className=" overflow-x-auto pb-10">
-            <h2 className='text-2xl font-bold p-4'>Preistabelle 2023</h2>
-            <div className='mx-auto rounded-xl md:w-1/2'>
-              <table className="w-full  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-
-                <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
-                  <tr>
-                    <th scope="col" className="px-6 py-3">
-                      von - bis
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      pro Nacht
-                    </th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      03.01. - 30.01.
-                    </th>
-                    <td className="px-6 py-4">
-                      85€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      30.01. - 25.03.
-                    </th>
-                    <td className="px-6 py-4">
-                      90€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      25.03. - 28.04.
-                    </th>
-                    <td className="px-6 py-4">
-                      95€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      28.04. - 18.06.
-                    </th>
-                    <td className="px-6 py-4">
-                      130€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      18.06. - 10.09.
-                    </th>
-                    <td className="px-6 py-4">
-                      186€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      10.09. - 08.10.
-                    </th>
-                    <td className="px-6 py-4">
-                      130€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      08.10 - 05.11.
-                    </th>
-                    <td className="px-6 py-4">
-                      95€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      05.11. - 22.12.
-                    </th>
-                    <td className="px-6 py-4">
-                      90€
-                    </td>
-                  </tr>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      22.12. - 03.01.2024
-                    </th>
-                    <td className="px-6 py-4">
-                      190€
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <h2 className='text-2xl font-bold p-4'>Preistabelle</h2>
+            <div className='h-12 flex justify-center items-center w-xl'>
+              <button onClick={() => changeYear("2023")} className='w-10'><img src="../src/assets/arrow-left.svg" alt="" /></button>
+              <h2 className='text-xl font-bold pb-1'>{currentYear}</h2>
+              <button onClick={() => changeYear("2024")} className='w-10'><img src="../src/assets/arrow-right.svg" alt="" /></button>
             </div>
+            {table2023 ?
+
+              <div className='mx-auto md:w-1/2' data-aos="fade-right">
+
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+
+                  <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        von - bis
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        pro Nacht
+                      </th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        03.01. - 30.01.
+                      </th>
+                      <td className="px-6 py-4">
+                        85€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        30.01. - 25.03.
+                      </th>
+                      <td className="px-6 py-4">
+                        90€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        25.03. - 28.04.
+                      </th>
+                      <td className="px-6 py-4">
+                        95€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        28.04. - 18.06.
+                      </th>
+                      <td className="px-6 py-4">
+                        130€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        18.06. - 10.09.
+                      </th>
+                      <td className="px-6 py-4">
+                        186€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        10.09. - 08.10.
+                      </th>
+                      <td className="px-6 py-4">
+                        130€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        08.10 - 05.11.
+                      </th>
+                      <td className="px-6 py-4">
+                        95€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        05.11. - 22.12.
+                      </th>
+                      <td className="px-6 py-4">
+                        90€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        22.12. - 03.01.2024
+                      </th>
+                      <td className="px-6 py-4">
+                        190€
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> : null}
+            {table2024 ?
+              <div className='mx-auto md:w-1/2' data-aos="fade-right">
+
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+
+                  <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        von - bis
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        pro Nacht
+                      </th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        03.01. - 30.01.
+                      </th>
+                      <td className="px-6 py-4">
+                        85€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        30.01. - 25.03.
+                      </th>
+                      <td className="px-6 py-4">
+                        90€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        25.03. - 28.04.
+                      </th>
+                      <td className="px-6 py-4">
+                        95€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        28.04. - 18.06.
+                      </th>
+                      <td className="px-6 py-4">
+                        130€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        18.06. - 10.09.
+                      </th>
+                      <td className="px-6 py-4">
+                        186€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        10.09. - 08.10.
+                      </th>
+                      <td className="px-6 py-4">
+                        130€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        08.10 - 05.11.
+                      </th>
+                      <td className="px-6 py-4">
+                        95€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        05.11. - 22.12.
+                      </th>
+                      <td className="px-6 py-4">
+                        90€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        22.12. - 03.01.2024
+                      </th>
+                      <td className="px-6 py-4">
+                        190€
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> : null}
+
           </div>
 
           <div id="ferienhausmiete-de-widget4-47780">

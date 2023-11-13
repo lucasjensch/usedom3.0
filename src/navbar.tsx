@@ -1,4 +1,6 @@
 import React from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -42,19 +44,24 @@ export default function Navbar() {
                 </nav>
             </header>
             {navbarOpen ? (
-                <div className="bg-black/50 h-screen flex items-center justify-center fixed z-50 w-screen">
-                    <div className="flex pt-16 bg-gray-100 w-3/4 h-2/3 md:h-1/2 rounded-xl relative flex-col">
+                <div className="bg-white h-screen flex items-center justify-center fixed z-50 w-screen">
+                    <div className="flex pt-16 w-full h-full relative flex-col">
                         <button onClick={() => setNavbarOpen(false)} className="absolute top-0 right-0 m-4">
                             <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
                         </button>
 
-                        <ul className="flex flex-col mt-4 font-medium items-center">
+                        <a onClick={() => setNavbarOpen(false)} href="#">
+                            <img data-aos="fade-left" data-aos-delay="100" className="mx-auto w-80" src="../src/assets/logo.jpg" alt="" />
+                        </a>
+
+                        <ul className="flex flex-col mt-24 font-medium items-center">
                             <li>
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#"
-                                    className=" block py-2 pr-4 pl-3 text-xl font-extrabold text-gray-700 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
                                     aria-current="page"
+                                    data-aos="fade-left" data-aos-delay="150"
                                 >
                                     Startseite
                                 </a>
@@ -63,7 +70,8 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#about"
-                                    className=" block py-2 pr-4 pl-3 text-xl font-extrabold text-gray-700 border-b border-gray-100 hover-bg-gray-50 lg-hover-bg-transparent lg-border-0 lg-hover-text-primary-700 lg-p-0 dark-text-gray-400 lg-dark-hover-text-white dark-hover-bg-gray-700 dark-hover-text-white lg-dark-hover-bg-transparent dark-border-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    data-aos="fade-left" data-aos-delay="200"
                                 >
                                     Ausstattung
                                 </a>
@@ -72,7 +80,8 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#pricing"
-                                    className=" block py-2 pr-4 pl-3 text-xl font-extrabold text-gray-700 border-b border-gray-100 hover-bg-gray-50 lg-hover-bg-transparent lg-border-0 lg-hover-text-primary-700 lg-p-0 dark-text-gray-400 lg-dark-hover-text-white dark-hover-bg-gray-700 dark-hover-text-white lg-dark-hover-bg-transparent dark-border-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    data-aos="fade-left" data-aos-delay="250"
                                 >
                                     Preise und Belegung
                                 </a>
@@ -81,7 +90,8 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#reviews"
-                                    className=" block py-2 pr-4 pl-3 text-xl font-extrabold text-gray-700 border-b border-gray-100 hover-bg-gray-50 lg-hover-bg-transparent lg-border-0 lg-hover-text-primary-700 lg-p-0 dark-text-gray-400 lg-dark-hover-text-white dark-hover-bg-gray-700 dark-hover-text-white lg-dark-hover-bg-transparent dark-border-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    data-aos="fade-left" data-aos-delay="300"
                                 >
                                     Rezensionen
                                 </a>
@@ -90,7 +100,8 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#contact"
-                                    className=" block py-2 pr-4 pl-3 text-xl font-extrabold text-gray-700 border-b border-gray-100 hover-bg-gray-50 lg-hover-bg-transparent lg-border-0 lg-hover-text-primary-700 lg-p-0 dark-text-gray-400 lg-dark-hover-text-white dark-hover-bg-gray-700 dark-hover-text-white lg-dark-hover-bg-transparent dark-border-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    data-aos="fade-left" data-aos-delay="350"
                                 >
                                     Kontakt
                                 </a>

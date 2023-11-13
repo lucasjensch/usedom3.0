@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import './App.css'
 import {
   Ripple,
   initTE,
 } from "tw-elements";
+
+
 
 
 
@@ -35,6 +37,18 @@ function App() {
     };
   }, []);
   useEffect(() => {
+    // Create the first script element
+    const script: HTMLScriptElement = document.createElement('script');
+    script.src = 'https://www.ferienhausmiete.de/verwalten/widgets/widgets.js?id=47780&lang=1&months=12&preview=36';
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Cleanup: remove the scripts and container when the component is unmounted
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  useEffect(() => {
     AOS.init({
       duration: 800,
       // Set the duration of animations
@@ -48,6 +62,8 @@ function App() {
   initTE({ Ripple });
 
   const [popup, openPopup] = React.useState(false);
+  const [popup1, openPopup1] = React.useState(false);
+  const [popup2, openPopup2] = React.useState(false);
 
   const [table2023, closeTable] = React.useState(true);
   const [table2024, openTable] = React.useState(false);
@@ -96,7 +112,7 @@ function App() {
             d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
         </svg>
       </button>
-
+      {/* Start of home-section */}
       <section id='home'>
         <div className='absolute flex flex-col items-center justify-center h-screen w-full mx-auto overflow-hidden z-40'>
           <h1 className='px-2 font-extrabold text-white text-5xl md:text-8xl text-center'>Willkommen in der Usedomperle</h1>
@@ -140,6 +156,8 @@ function App() {
 
 
       </section>
+      {/* End of home-section */}
+      {/* Start of about-section */}
       <section id='about' className='min-h-screen py-24'>
         <div className='pb-16'>
           <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Unsere Ausstattung</h2>
@@ -153,12 +171,24 @@ function App() {
             </div>
             <div className="p-8">
               <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Rund ums Haus</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">Incredible accommodation for your team</p>
-              <p className="mt-2 text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
+              <p className="block mt-1 text-lg leading-tight font-medium text-black">Außenbereich, Garten, Grillplatz und Terrasse</p>
+              <p className="mt-2 font-light text-slate-500">Der Außenbereich der "Usedomperle"beeindruckt mit Gemütlichkeit. Umgeben von üppiger Natur bietet die Terrasse einen perfekten Platz zum Entspannen. Ein idyllischer Ort für Ihren Naturgenuss.</p>
               <button onClick={() => openPopup(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr; </button>
             </div>
           </div>
         </div>
+
+        {popup ?
+          <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
+            <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+              <button onClick={() => openPopup(false)} className="absolute top-0 right-0 m-4">
+                <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
+              </button>
+              <h2 className='font-extrabold text-xl md:text-2xl'>Rund ums Haus</h2>
+              <p></p>
+            </div>
+          </div>
+          : null}
 
         <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
           <div className="md:flex">
@@ -166,10 +196,10 @@ function App() {
               <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Esstisch_Couch.jpg" alt="Modern building architecture" />
             </div>
             <div className="p-8">
-              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">Incredible accommodation for your team</p>
-              <p className="mt-2 text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
-              <button onClick={() => openPopup(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Erdgeschoss</div>
+              <p className="block mt-1 text-lg leading-tight font-medium text-black">Erdgeschoss mit Küche, Wohnzimmer und Bad</p>
+              <p className="mt-2 font-light text-slate-500">Das Erdgeschoss begeistert mit modernem Design. Die offene Küche ist mit hochwertigen Geräten ausgestattet, während das Wohnzimmer mit stilvollen Möbeln und großen Fenstern einen einladenden Raum schafft.</p>
+              <button onClick={() => openPopup1(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
             </div>
           </div>
         </div>
@@ -180,22 +210,25 @@ function App() {
               <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Schlafzimmer2.jpg" alt="Modern building architecture" />
             </div>
             <div className="p-8">
-              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">Incredible accommodation for your team</p>
-              <p className="mt-2 text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
-              <button onClick={() => openPopup(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Obergeschosse</div>
+              <p className="block mt-1 text-lg leading-tight font-medium text-black">3x Schlafzimmer, Bad inkl. Sauna</p>
+              <p className="mt-2 font-light text-slate-500">Die oberen Geschosse der präsentieren sich als gemütliche Rückzugsorte. Die Schlafzimmer sind geschmackvoll eingerichtet, bieten Komfort und eine erholsame Atmosphäre.
+                Das moderne Bad ist elegant und lädt dank der privaten Sauna zu entspannenden Momenten ein.</p>
+              <button onClick={() => openPopup2(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
             </div>
           </div>
         </div>
 
       </section>
-
+      {/* End of about-section */}
+      {/* Start of parallex-section */}
       <section className=''>
         <div className='flex items-center justify-center h-96 bg-parallax bg-fixed bg-cover p-5'>
-          <h2 className='text-white text-3xl font-extrabold break-all md:text-4xl'>Freuen Sie sich auf Strandspaziergänge</h2>
+          <h2 className='text-white text-3xl font-extrabold break-words md:text-4xl'>Freuen Sie sich auf Strandspaziergänge</h2>
         </div>
       </section>
-
+      {/* End of parrallex-section */}
+      {/* Start of Pricing-section */}
       <section id='pricing' className='min-h-screen py-24 text-center'>
         <div className='max-w-4xl grid grid-cols-1 mx-auto'>
 
@@ -208,23 +241,22 @@ function App() {
           </div>
 
 
-          <div className=" overflow-x-auto pb-10">
+          <div className=" overflow-x-auto pb-10 ">
             <h2 className='text-2xl font-bold p-4'>Preistabelle</h2>
             <div className='h-12 flex justify-center items-center w-xl'>
-              <button onClick={() => changeYear("2023")} className='w-10'><img src="../src/assets/arrow-left.svg" alt="" /></button>
-              <h2 className='text-xl font-bold pb-1'>{currentYear}</h2>
-              <button onClick={() => changeYear("2024")} className='w-10'><img src="../src/assets/arrow-right.svg" alt="" /></button>
+              <button onClick={() => { changeYear("2023"); closeTable(true); openTable(false) }} className='w-10'><img src="../src/assets/arrow-left.svg" alt="" /></button>
+              <h2 className='text-xl font-extrabold text-indigo-500 pb-1'>{currentYear}</h2>
+              <button onClick={() => { changeYear("2024"); closeTable(false), openTable(true) }} className='w-10'><img src="../src/assets/arrow-right.svg" alt="" /></button>
             </div>
             {table2023 ?
-
-              <div className='mx-auto md:w-1/2' data-aos="fade-right">
+              <div className='mx-auto md:w-1/2 shadow-md shadow-gray-500' data-aos="fade-right">
 
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-                  <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
+                  <thead className="text-sm bg-gray-200 uppercase text-indigo-500">
                     <tr>
                       <th scope="col" className="px-6 py-3">
-                        von - bis
+                        Zeitraum
                       </th>
                       <th scope="col" className="px-6 py-3">
                         pro Nacht
@@ -249,7 +281,7 @@ function App() {
                         90€
                       </td>
                     </tr>
-                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b-2 border-gray-400 dark:bg-gray-600 dark:border-gray-700">
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         25.03. - 28.04.
                       </th>
@@ -273,7 +305,7 @@ function App() {
                         186€
                       </td>
                     </tr>
-                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b-2 border-gray-400 dark:bg-gray-800 dark:border-gray-700">
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         10.09. - 08.10.
                       </th>
@@ -302,21 +334,21 @@ function App() {
                         22.12. - 03.01.2024
                       </th>
                       <td className="px-6 py-4">
-                        190€
+                        180€
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div> : null}
             {table2024 ?
-              <div className='mx-auto md:w-1/2' data-aos="fade-right">
+              <div className='mx-auto md:w-1/2 shadow-md shadow-gray-500' data-aos="fade-left">
 
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-                  <thead className="text-xs text-gray-100 uppercase bg-indigo-500">
+                  <thead className="text-sm bg-gray-200 uppercase text-indigo-500">
                     <tr>
                       <th scope="col" className="px-6 py-3">
-                        von - bis
+                        Zeitraum
                       </th>
                       <th scope="col" className="px-6 py-3">
                         pro Nacht
@@ -327,63 +359,7 @@ function App() {
                   <tbody>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        03.01. - 30.01.
-                      </th>
-                      <td className="px-6 py-4">
-                        85€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        30.01. - 25.03.
-                      </th>
-                      <td className="px-6 py-4">
-                        90€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        25.03. - 28.04.
-                      </th>
-                      <td className="px-6 py-4">
-                        95€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        28.04. - 18.06.
-                      </th>
-                      <td className="px-6 py-4">
-                        130€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        18.06. - 10.09.
-                      </th>
-                      <td className="px-6 py-4">
-                        186€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b-2 border-gray-600 dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        10.09. - 08.10.
-                      </th>
-                      <td className="px-6 py-4">
-                        130€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        08.10 - 05.11.
-                      </th>
-                      <td className="px-6 py-4">
-                        95€
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        05.11. - 22.12.
+                        03.01. - 28.01.
                       </th>
                       <td className="px-6 py-4">
                         90€
@@ -391,7 +367,63 @@ function App() {
                     </tr>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        22.12. - 03.01.2024
+                        28.01. - 24.03.
+                      </th>
+                      <td className="px-6 py-4">
+                        95€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-400 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        24.03. - 28.04.
+                      </th>
+                      <td className="px-6 py-4">
+                        100€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        28.04. - 16.06.
+                      </th>
+                      <td className="px-6 py-4">
+                        140€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        16.06. - 01.09.
+                      </th>
+                      <td className="px-6 py-4">
+                        195€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b-2 border-gray-400 dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        01.09. - 06.10.
+                      </th>
+                      <td className="px-6 py-4">
+                        140€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        06.10 - 03.11.
+                      </th>
+                      <td className="px-6 py-4">
+                        100€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        03.11. - 22.12.
+                      </th>
+                      <td className="px-6 py-4">
+                        90€
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        22.12. - 05.01.2025
                       </th>
                       <td className="px-6 py-4">
                         190€
@@ -400,24 +432,29 @@ function App() {
                   </tbody>
                 </table>
               </div> : null}
-
           </div>
 
-          <div id="ferienhausmiete-de-widget4-47780">
+          <div className='hidden w-full md:block' id="ferienhausmiete-de-widget4-47780">
             <a href="https://www.ferienhausmiete.de/47780.htm" target="_blank" rel="noopener noreferrer">
               Die Usedomperle - Direkt am Strand
             </a>
           </div>
+
+          <div className='w-full md:hidden' id="ferienhausmiete-de-widget3-47780">
+            <a href="https://www.ferienhausmiete.de/47780.htm" target="_blank">Die Usedomperle - Direkt am Strand</a>
+          </div>
+
           <div id='booking'>
-            <div id="fhm-price-calculator-47780">
+            <div className='w-full' id="fhm-price-calculator-47780">
               <a href="https://www.ferienhausmiete.de/47780.htm" target="_blank">Die Usedomperle - Direkt am Strand</a>
             </div>
           </div>
 
         </div>
 
-      </section>
-
+      </section >
+      {/* End of Pricing-section */}
+      {/* Start of review-section */}
       <section className='pt-24' id='reviews'>
         <div className="mx-auto text-center md:max-w-xl lg:max-w-4xl">
           <h3
@@ -599,7 +636,8 @@ function App() {
           </div>
         </div>
       </section>
-
+      {/* End of review-section */}
+      {/* Start of contact-section */}
       <section className="bg-white dark:bg-gray-900 py-24" id='contact'>
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-3xl -md">
           <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontaktieren Sie uns</h2>
@@ -617,32 +655,32 @@ function App() {
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Ihre Nachricht</label>
               <textarea id="message" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Schreiben Sie eine Nachricht..."></textarea>
             </div>
-            <button type="submit" className="shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            <button data-aos="fade-right" type="submit" className="shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
               Nachricht senden
             </button>
           </form>
         </div>
       </section>
 
-      <footer className="bg-gray-300 rounded-lg shadow text-center">
+      <footer className="bg-gray-800 rounded-lg shadow text-center">
         <ul className='pt-4'>
           <li>
-            <p className="text-black text-sm font-light">Ferienhaus "Die Usedomperle"</p>
+            <p className="text-gray-100 text-xs font-light">Ferienhaus "Die Usedomperle"</p>
           </li>
           <li>
-            <p className="text-black text-sm font-light">Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}</p>
+            <p className="text-gray-100 text-xs font-light">Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}</p>
           </li>
           <li>
-            <p className="text-black text-sm font-light">01520-8870816</p>
+            <p className="text-gray-100 text-xs font-light">01520-8870816</p>
           </li>
           <li>
-            <a href="mailto:info@die-usedomperle" className="text-indigo-600 text-sm font-light">info@die-usedomperle.de</a>
+            <a href="mailto:info@die-usedomperle" className="text-indigo-300 text-xs font-light">info@die-usedomperle.de</a>
           </li>
         </ul>
 
         <div className="h-24 w-full mx-auto max-w-screen-xl p-4 flex items-end justify-center">
 
-          <span className="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a href="https://aecht.media" target="_blank" className="hover:none text-indigo-700 font-bold">ächtmedia™</a>. Alle Rechte vorbehalten.
+          <span className="text-sm text-gray-100 sm:text-center dark:text-gray-400">© 2023 <a href="https://aecht.media" target="_blank" className="hover:none text-white font-extrabold">ächtmedia™</a>. Alle Rechte vorbehalten.
           </span>
         </div>
       </footer>

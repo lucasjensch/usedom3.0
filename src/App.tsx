@@ -163,13 +163,13 @@ function App() {
         <div className='grid grid-cols-1 lg:grid-cols-2 ' >
 
           <div className='lg:w-10/12 lg:order-2  mx-auto'>
-            <div className='px-8 pb-12  lg:sticky lg:top-24 ' data-aos="fade-right">
+            <div className='px-8 pb-12  lg:sticky lg:top-24 ' >
               <h2 className="pt-8 text-xl md:text-2xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white">Im Allgemeinen</h2>
               <p className="font-light text-gray-500 text-lg pt-10 pb-10 text-left">
                 Die "Usedomperle" ist mit liebevoller Sorgfalt gestaltet und bietet eine erstklassige Ausstattung für Ihren perfekten Ostseeaufenthalt.
                 Unsere modernen Ferienwohnungen verfügen über voll ausgestattete Küchen, gemütliche Wohnbereiche und komfortable Schlafzimmer.
                 Genießen Sie Annehmlichkeiten wie kostenfreies WLAN, Flachbildfernseher und eine Auswahl an Brettspielen für gesellige Abende.
-                Die Badezimmer sind elegant gestaltet, und einige Unterkünfte bieten sogar einen eigenen Balkon oder eine Terrasse, um die frische Ostseeluft zu genießen.
+                Die Badezimmer sind elegant gestaltet, und einige Unterkünfte bieten sogar eine Terrasse, um die frische Ostseeluft zu genießen.
                 Bei uns steht Ihr Komfort an erster Stelle, damit Sie sich in der "Usedomperle" wie zu Hause fühlen können.
               </p>
               <a href="#contact" className='shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-indigo-700 hover:text-white'>

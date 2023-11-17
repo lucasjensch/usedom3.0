@@ -148,7 +148,7 @@ function App() {
               Mehr Über Uns
             </a>
           </div>
-          <div data-aos="fade-left" data-aos-delay="200">
+          <div data-aos="fade-left" data-aos-delay="200" className='mx-auto overflow-hidden'>
             <img className='scale-125 ' src="../src/assets/map.svg" alt="" />
           </div>
         </div>
@@ -158,66 +158,86 @@ function App() {
       </section>
       {/* End of home-section */}
       {/* Start of about-section */}
-      <section id='about' className='min-h-screen py-24'>
-        <div className='pb-16'>
-          <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Unsere Ausstattung</h2>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit</p>
+      <section id='about' className=' py-24 lg:overflow-visible'>
+        <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Unsere Ausstattung</h2>
+        <div className='grid grid-cols-1 lg:grid-cols-2 ' >
 
-        </div>
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
-          <div className="md:flex">
-            <div className="md:shrink-0">
-              <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Hintergrund_Haus.jpg" alt="Modern building architecture" />
-            </div>
-            <div className="p-8">
-              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Rund ums Haus</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">Außenbereich, Garten, Grillplatz und Terrasse</p>
-              <p className="mt-2 font-light text-slate-500">Der Außenbereich der "Usedomperle"beeindruckt mit Gemütlichkeit. Umgeben von üppiger Natur bietet die Terrasse einen perfekten Platz zum Entspannen. Ein idyllischer Ort für Ihren Naturgenuss.</p>
-              <button onClick={() => openPopup(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr; </button>
+          <div className='lg:w-10/12 lg:order-2  mx-auto'>
+            <div className='px-8 pb-12  lg:sticky lg:top-24 ' data-aos="fade-right">
+              <h2 className="pt-8 text-xl md:text-2xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white">Im Allgemeinen</h2>
+              <p className="font-light text-gray-500 text-lg pt-10 pb-10 text-left">
+                Die "Usedomperle" ist mit liebevoller Sorgfalt gestaltet und bietet eine erstklassige Ausstattung für Ihren perfekten Ostseeaufenthalt.
+                Unsere modernen Ferienwohnungen verfügen über voll ausgestattete Küchen, gemütliche Wohnbereiche und komfortable Schlafzimmer.
+                Genießen Sie Annehmlichkeiten wie kostenfreies WLAN, Flachbildfernseher und eine Auswahl an Brettspielen für gesellige Abende.
+                Die Badezimmer sind elegant gestaltet, und einige Unterkünfte bieten sogar einen eigenen Balkon oder eine Terrasse, um die frische Ostseeluft zu genießen.
+                Bei uns steht Ihr Komfort an erster Stelle, damit Sie sich in der "Usedomperle" wie zu Hause fühlen können.
+              </p>
+              <a href="#contact" className='shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-indigo-700 hover:text-white'>
+                Noch Fragen? Kontaktieren Sie uns gern</a>
             </div>
           </div>
-        </div>
 
-        {popup ?
-          <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
-            <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
-              <button onClick={() => openPopup(false)} className="absolute top-0 right-0 m-4">
-                <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
-              </button>
-              <h2 className='font-extrabold text-xl md:text-2xl'>Rund ums Haus</h2>
-              <p></p>
+          <div className='px-8 pb-12 lg:w-10/12 mx-auto'>
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
+              <div className="md:flex">
+                <div className="md:shrink-0">
+                  <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Hintergrund_Haus.jpg" alt="Modern building architecture" />
+                </div>
+                <div className="p-8">
+                  <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Rund ums Haus</div>
+                  <p className="block mt-1 text-lg leading-tight font-medium text-black">Außenbereich, Garten, Grillplatz und Terrasse</p>
+                  <p className="mt-2 font-light text-slate-500">Der Außenbereich der "Usedomperle"beeindruckt mit Gemütlichkeit. Umgeben von üppiger Natur bietet die Terrasse einen perfekten Platz zum Entspannen. Ein idyllischer Ort für Ihren Naturgenuss.</p>
+                  <button onClick={() => openPopup(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr; </button>
+                </div>
+              </div>
+            </div>
+
+            {popup ?
+              <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
+                <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+                  <button onClick={() => openPopup(false)} className="absolute top-0 right-0 m-4">
+                    <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
+                  </button>
+                  <h2 className='font-extrabold text-xl md:text-2xl'>Rund ums Haus</h2>
+                  <p></p>
+                </div>
+              </div>
+              : null}
+
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
+              <div className="md:flex">
+                <div className="md:shrink-0">
+                  <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Esstisch_Couch.jpg" alt="Modern building architecture" />
+                </div>
+                <div className="p-8">
+                  <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Erdgeschoss</div>
+                  <p className="block mt-1 text-lg leading-tight font-medium text-black">Erdgeschoss mit Küche, Wohnzimmer und Bad</p>
+                  <p className="mt-2 font-light text-slate-500">Das Erdgeschoss begeistert mit modernem Design. Die offene Küche ist mit hochwertigen Geräten ausgestattet, während das Wohnzimmer mit stilvollen Möbeln und großen Fenstern einen einladenden Raum schafft.</p>
+                  <button onClick={() => openPopup1(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
+              <div className="md:flex">
+                <div className="md:shrink-0">
+                  <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Schlafzimmer2.jpg" alt="Modern building architecture" />
+                </div>
+                <div className="p-8">
+                  <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Obergeschosse</div>
+                  <p className="block mt-1 text-lg leading-tight font-medium text-black">3x Schlafzimmer, Bad inkl. Sauna</p>
+                  <p className="mt-2 font-light text-slate-500">Die oberen Geschosse der präsentieren sich als gemütliche Rückzugsorte. Die Schlafzimmer sind geschmackvoll eingerichtet, bieten Komfort und eine erholsame Atmosphäre.
+                    Das moderne Bad ist elegant und lädt dank der privaten Sauna zu entspannenden Momenten ein.</p>
+                  <button onClick={() => openPopup2(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
+                </div>
+              </div>
             </div>
           </div>
-          : null}
 
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
-          <div className="md:flex">
-            <div className="md:shrink-0">
-              <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Esstisch_Couch.jpg" alt="Modern building architecture" />
-            </div>
-            <div className="p-8">
-              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Erdgeschoss</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">Erdgeschoss mit Küche, Wohnzimmer und Bad</p>
-              <p className="mt-2 font-light text-slate-500">Das Erdgeschoss begeistert mit modernem Design. Die offene Küche ist mit hochwertigen Geräten ausgestattet, während das Wohnzimmer mit stilvollen Möbeln und großen Fenstern einen einladenden Raum schafft.</p>
-              <button onClick={() => openPopup1(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
-            </div>
-          </div>
+
         </div>
 
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
-          <div className="md:flex">
-            <div className="md:shrink-0">
-              <img className="h-48 w-full object-cover md:h-full md:w-48" src="./src/assets/Schlafzimmer2.jpg" alt="Modern building architecture" />
-            </div>
-            <div className="p-8">
-              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Obergeschosse</div>
-              <p className="block mt-1 text-lg leading-tight font-medium text-black">3x Schlafzimmer, Bad inkl. Sauna</p>
-              <p className="mt-2 font-light text-slate-500">Die oberen Geschosse der präsentieren sich als gemütliche Rückzugsorte. Die Schlafzimmer sind geschmackvoll eingerichtet, bieten Komfort und eine erholsame Atmosphäre.
-                Das moderne Bad ist elegant und lädt dank der privaten Sauna zu entspannenden Momenten ein.</p>
-              <button onClick={() => openPopup2(true)} className='pt-4 text-indigo-500 font-bold'>Mehr Informationen &rarr;</button>
-            </div>
-          </div>
-        </div>
+
 
       </section>
       {/* End of about-section */}
@@ -234,7 +254,7 @@ function App() {
 
           <div>
             <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Preise & Belegung</h2>
-            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
               Ob Kurzurlaub oder längere Aufenthalte – finden Sie das perfekte Angebot für Ihren Ostseeurlaub.
               Planen Sie Ihre Auszeit in der "Usedomperle" und sichern Sie sich Ihr Stück Inselglück! Wir freuen uns darauf, Sie bald bei uns begrüßen zu dürfen!
             </p>
@@ -343,7 +363,7 @@ function App() {
             {table2024 ?
               <div className='mx-auto md:w-1/2 shadow-md shadow-gray-500' data-aos="fade-left">
 
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="w-full text-sm text-left mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
 
                   <thead className="text-sm bg-gray-200 uppercase text-indigo-500">
                     <tr>
@@ -456,14 +476,14 @@ function App() {
       {/* End of Pricing-section */}
       {/* Start of review-section */}
       <section className='pt-24' id='reviews'>
-        <div className="mx-auto text-center md:max-w-xl lg:max-w-4xl">
+        <div className="mx-auto text-center max-w-4xl">
           <h3
             className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
             Rezensionen
           </h3>
-          <p className="font-light text-gray-500 mb-6 pb-2 md:mb-12 md:pb-0">
-            Uns ist wichtig was unsere Besucher von uns denken. Hierfür haben wir ein Paar Rezensionen
-            für Sie aufgelistet, die die Erfahrung in der Usedomperle am besten beschreiben. Scheuen Sie also nicht und schreibe auch Sie gern eine Rezension.
+          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
+            Uns ist wichtig, was unsere Besucher von uns denken. Daher haben wir einige Rezensionen für Sie zusammengestellt, die die Erfahrung in der Usedomperle optimal widerspiegeln.
+            Zögern Sie also nicht und teilen Sie gerne auch Ihre eigenen Eindrücke in einer Rezension mit.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 text-center mx-auto max-w-3xl md:grid-cols-2 py-8" data-aos="fade-left">
@@ -639,9 +659,12 @@ function App() {
       {/* End of review-section */}
       {/* Start of contact-section */}
       <section className="bg-white dark:bg-gray-900 py-24" id='contact'>
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-3xl -md">
-          <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontaktieren Sie uns</h2>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit.</p>
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
+          <div className="min-w-4xl">
+            <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontaktieren Sie uns</h2>
+            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach nur Feedback geben? Wir stehen für Sie bereit.</p>
+          </div>
+
           <form action="#" className="space-y-8">
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ihre Email</label>

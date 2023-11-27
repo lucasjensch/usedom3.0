@@ -217,6 +217,17 @@ function App() {
                 </div>
               </div>
             </div>
+            {popup1 ?
+              <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
+                <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+                  <button onClick={() => openPopup1(false)} className="absolute top-0 right-0 m-4">
+                    <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
+                  </button>
+                  <h2 className='font-extrabold text-xl md:text-2xl'>Im Erdgeschoss</h2>
+                  <p></p>
+                </div>
+              </div>
+              : null}
 
             <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-6" data-aos="fade-left">
               <div className="md:flex">
@@ -232,6 +243,17 @@ function App() {
                 </div>
               </div>
             </div>
+            {popup2 ?
+              <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
+                <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+                  <button onClick={() => openPopup2(false)} className="absolute top-0 right-0 m-4">
+                    <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
+                  </button>
+                  <h2 className='font-extrabold text-xl md:text-2xl'>Die Obergeschosse</h2>
+                  <p></p>
+                </div>
+              </div>
+              : null}
           </div>
 
 

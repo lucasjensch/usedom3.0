@@ -6,6 +6,7 @@ import './App.css'
 import {
   Ripple,
   initTE,
+  Carousel,
 } from "tw-elements";
 
 
@@ -60,6 +61,7 @@ function App() {
   }
 
   initTE({ Ripple });
+  initTE({ Carousel });
 
   const [popup, openPopup] = React.useState(false);
   const [popup1, openPopup1] = React.useState(false);
@@ -91,6 +93,8 @@ function App() {
 
   const [currentYear, changeYear] = React.useState("2023");
 
+
+
   return (
     <>
       <button
@@ -115,10 +119,16 @@ function App() {
       {/* Start of home-section */}
       <section id='home'>
         <div className='absolute flex flex-col items-center justify-center h-screen w-full mx-auto overflow-hidden z-40'>
-          <h1 className='px-2 font-extrabold text-white text-5xl md:text-8xl text-center'>Willkommen in der Usedomperle</h1>
-          <p className='px-2 font-semibold text-white text-xl pt-8 md:text-3xl text-center'>Dem exklusiven Ferienhaus direkt am Strand
+          <h1 className='px-2 font-extrabold text-indigo-400 text-4xl md:text-8xl text-center uppercase'>Willkommen in der Usedomperle</h1>
+          <p className='px-2 font-light text-white text-xl pt-8 md:text-3xl text-center'>Dem exklusiven Ferienhaus direkt am Strand
             in der Dünenresidenz Karlshagen auf Usedom
           </p>
+        </div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
+          <a href='#more' className="animate-bounce grid-cols-1 grid">
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+          </a>
         </div>
         <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">
           <video
@@ -133,9 +143,11 @@ function App() {
             />
             Your browser does not support the video tag.
           </video>
+
+
         </div>
 
-        <div className="grid grid-cols-1 py-24 lg:grid-cols-2 " data-aos="fade-right">
+        <div id='more' className="grid grid-cols-1 py-24 mx-auto lg:grid-cols-2" data-aos="fade-right">
           <div className="px-8 pb-12 lg:w-8/12 mx-auto">
             <h2 className='font-extrabold text-3xl mb-16 md:text-4xl'>Die Usedomperle - Ihr Traumferienhaus für jede Jahreszeit</h2>
             <p className='font-light text-gray-500 text-lg'>
@@ -148,8 +160,11 @@ function App() {
               Mehr Über Uns
             </a>
           </div>
-          <div data-aos="fade-left" data-aos-delay="200" className='mx-auto overflow-hidden'>
-            <img className='scale-125 ' src="../src/assets/map.svg" alt="" />
+          <div data-aos="fade-left" data-aos-delay="200" className='mx-auto my-auto overflow-hidden'>
+            <a href="https://www.google.de/maps/place/Die+Usedomperle/@54.1284421,13.8331991,19z/data=!3m1!4b1!4m6!3m5!1s0x47ab03ce74d841c1:0xae02c2035e00cba3!8m2!3d54.1284421!4d13.8331991!16s%2Fg%2F11bzy6s93k?entry=ttu" target='blank'>
+              <img className='scale-125 animate-pulse pt-4' src="../src/assets/map.svg" alt="" />
+            </a>
+
           </div>
         </div>
 
@@ -160,10 +175,10 @@ function App() {
       {/* Start of about-section */}
       <section id='about' className=' py-24 lg:overflow-visible'>
         <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Unsere Ausstattung</h2>
-        <div className='grid grid-cols-1 lg:grid-cols-2 ' >
+        <div className='grid grid-cols-1' >
 
-          <div className='lg:w-10/12 lg:order-2  mx-auto'>
-            <div className='px-8 pb-12  lg:sticky lg:top-24 ' >
+          <div className='lg:w-10/12 lg:order-2 mx-auto'>
+            <div className='px-8 pb-12 lg:top-24 ' >
               <h2 className="pt-8 text-xl md:text-2xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white">Im Allgemeinen</h2>
               <p className="font-light text-gray-500 text-lg pt-10 pb-10 text-left">
                 Die "Usedomperle" ist mit liebevoller Sorgfalt gestaltet und bietet eine erstklassige Ausstattung für Ihren perfekten Ostseeaufenthalt.
@@ -173,8 +188,15 @@ function App() {
                 Bei uns steht Ihr Komfort an erster Stelle, damit Sie sich in der "Usedomperle" wie zu Hause fühlen können.
               </p>
               <a href="#contact" className='shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-indigo-700 hover:text-white'>
-                Noch Fragen? Kontaktieren Sie uns gern</a>
+                Kontaktieren Sie uns gern</a>
+              <div className="pt-6 flex flex-coltext-left" id='video'>
+                <h2 className="pt-8 text-xl md:text-2xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white">Unsere Austattung</h2>
+              </div>
+              <div className="mx-auto w-auto max-w-screen-lg flex items-center justify-center px-4">
+                <video src="../src\assets\neue Bilder Usedomperle\Usedomperle_Interieur.mp4" className='' controls></video>
+              </div>
             </div>
+
           </div>
 
           <div className='px-8 pb-12 lg:w-10/12 mx-auto'>
@@ -225,6 +247,7 @@ function App() {
                   </button>
                   <h2 className='font-extrabold text-xl md:text-2xl'>Im Erdgeschoss</h2>
                   <p></p>
+
                 </div>
               </div>
               : null}
@@ -243,20 +266,17 @@ function App() {
                 </div>
               </div>
             </div>
-            {popup2 ?
+            {popup2 ? (
               <div className="h-screen flex justify-center items-center bg-black/30 z-50 fixed top-0 left-0 w-screen">
                 <div className="flex p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
                   <button onClick={() => openPopup2(false)} className="absolute top-0 right-0 m-4">
                     <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
                   </button>
-                  <h2 className='font-extrabold text-xl md:text-2xl'>Die Obergeschosse</h2>
-                  <p></p>
+                  <h2 className="font-extrabold text-xl md:text-2xl">Die Obergeschosse</h2>
                 </div>
               </div>
-              : null}
+            ) : null}
           </div>
-
-
         </div>
 
 
@@ -707,7 +727,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="bg-gray-800 rounded-lg shadow text-center">
+      <footer className="bg-gray-800 shadow text-center">
         <ul className='pt-4'>
           <li>
             <p className="text-gray-100 text-xs font-light">Ferienhaus "Die Usedomperle"</p>
@@ -734,3 +754,4 @@ function App() {
 }
 
 export default App
+

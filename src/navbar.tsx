@@ -44,7 +44,7 @@ export default function Navbar() {
                 </nav>
             </header>
             {navbarOpen ? (
-                <div className="bg-white h-screen flex items-center justify-center fixed z-50 w-screen">
+                <div className="bg-white h-screen flex fixed z-50 w-screen">
                     <div className="flex pt-16 w-full h-full relative flex-col">
                         <button onClick={() => setNavbarOpen(false)} className="absolute top-0 right-0 m-4">
                             <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
@@ -54,12 +54,12 @@ export default function Navbar() {
                             <img data-aos="fade-left" data-aos-delay="100" className="mx-auto w-80" src="../src/assets/logo.jpg" alt="" />
                         </a>
 
-                        <ul className="flex flex-col mt-24 font-medium items-center">
+                        <ul className="flex flex-col mt-24 items-left">
                             <li>
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#"
-                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-5xl font-extrabold text-gray-700"
                                     aria-current="page"
                                     data-aos="fade-left" data-aos-delay="150"
                                 >
@@ -70,7 +70,7 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#about"
-                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-5xl font-extrabold text-gray-700"
                                     data-aos="fade-left" data-aos-delay="200"
                                 >
                                     Ausstattung
@@ -80,7 +80,7 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#pricing"
-                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-5xl font-extrabold text-gray-700"
                                     data-aos="fade-left" data-aos-delay="250"
                                 >
                                     Preise und Belegung
@@ -90,7 +90,7 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#reviews"
-                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-5xl font-extrabold text-gray-700"
                                     data-aos="fade-left" data-aos-delay="300"
                                 >
                                     Rezensionen
@@ -100,7 +100,7 @@ export default function Navbar() {
                                 <a
                                     onClick={() => setNavbarOpen(false)}
                                     href="#contact"
-                                    className=" block py-2 pr-4 pl-3 text-2xl font-extrabold text-gray-700"
+                                    className=" block py-2 pr-4 pl-3 text-5xl font-extrabold text-gray-700"
                                     data-aos="fade-left" data-aos-delay="350"
                                 >
                                     Kontakt
@@ -108,16 +108,16 @@ export default function Navbar() {
                             </li>
                             <div className="absolute bottom-0 p-4">
                                 <li>
-                                    <p className="text-black text-sm font-light">Ferienhaus "Die Usedomperle"</p>
+                                    <p className="text-black text-md font-light">Ferienhaus "Die Usedomperle"</p>
                                 </li>
                                 <li>
-                                    <p className="text-black text-sm font-light">Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}</p>
+                                    <p className="text-black text-md font-light">Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}</p>
                                 </li>
                                 <li>
-                                    <p className="text-black text-sm font-light">01520-8870816</p>
+                                    <p className="text-black text-md font-light">01520-8870816</p>
                                 </li>
                                 <li>
-                                    <a href="mailto:info@die-usedomperle" className="text-indigo-600 text-sm font-light">info@die-usedomperle.de</a>
+                                    <a href="mailto:info@die-usedomperle" className="text-indigo-600 text-md font-light">info@die-usedomperle.de</a>
                                 </li>
                             </div>
 

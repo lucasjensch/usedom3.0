@@ -110,20 +110,80 @@ function App() {
             d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
         </svg>
       </button>
-      <section className='min-h-screen flex justify-center max-w-5xl mx-auto'>
-        <div className='max-w-5xl border border-red-500  flex justify-center items-end '>
-          <div className='px-4 pb-20 border-blue-500 border bg-black/40'>
-            <h1 className='text-gray-100 text-6xl uppercase font-bold'>Die Usedomperle</h1>
-            <p className='text-lg text-gray-100'>Ihr exklusives Ferienhaus in der Dünenresidenz auf der Insel Usedom.</p>
+      <section id='home'>
+        <div className='absolute flex flex-col items-center justify-center h-screen w-full mx-auto overflow-hidden z-40'>
+          <h1 className='px-2 font-extrabold text-white text-4xl md:text-8xl text-center uppercase'>Willkommen in der Usedomperle</h1>
+          <p className='px-2 font-light text-white text-xl pt-8 md:text-3xl text-center'>Dem exklusiven Ferienhaus direkt am Strand
+            in der Dünenresidenz Karlshagen auf Usedom
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
+          <a href='#more' className="animate-bounce grid-cols-1 grid">
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+          </a>
+        </div>
+        <div className="relative flex items-center justify-center z-10 h-screen overflow-hidden shadow-xl shadow-gray-400">
+          <video
+            autoPlay
+            loop
+            muted
+            className="absolute z-2 w-auto min-w-full min-h-full max-w-none"
+          >
+            <source
+              src="../src/assets/intro_video.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+
+
+        </div>
+
+        <div id='more' className="grid grid-cols-1 py-24 mx-auto" data-aos="fade-right">
+          <div className="px-8 pb-12 lg:w-8/12 mx-auto">
+            <h2 className='font-extrabold text-3xl md:text-4xl'>Die Usedomperle - Ihr Traumferienhaus für jede Jahreszeit</h2>
+            <p className='font-light text-gray-500 text-lg py-12'>
+              Die Usedomperle ist ein traumhaftes Ferienhaus direkt am Strand.
+              Genießen Sie Ihren Urlaub in dieser gemütlichen Oase, die alles bietet, was Sie für einen erholsamen Aufenthalt benötigen.
+              Von atemberaubenden Meerblick bis hin zu modernen Annehmlichkeiten - die Usedomperle lässt keine Wünsche offen.
+            </p>
+            <a href="#about" className='shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-indigo-700 hover:text-white'>
+              Mehr Über Uns
+            </a>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="200" className='mx-auto my-auto overflow-x-scroll pl-6'>
+
+            <div className="flex flex-row gap-4 h-52">
+              <div className='absolute z-20 w-screen'>
+                <button className='bg-gray-300 w-6 rounded-full relative left-0'>{"<"}</button>
+                <button className='bg-gray-300 w-6 rounded-full relative right-0'>{">"}</button>
+              </div>
+              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
+                <img src="../src/assets/neue Bilder Usedomperle/Eingangstür.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
+              </div>
+              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
+                <img src="../src/assets/neue Bilder Usedomperle/Kamin-indoor.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
+              </div>
+              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
+                <img src="../src/assets/neue Bilder Usedomperle/couch.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
+              </div>
+              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
+                <img src="../src/assets/neue Bilder Usedomperle/Schuppen-von-oben.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
+              </div>
+
+            </div>
           </div>
         </div>
+
+
+
       </section>
       <section className='bg-white min-h-screen'>
         <div className="">
-          <Gallery></Gallery>
         </div>
       </section>
-      <section className='bg-gray-800 min-h-screen rounded-xl shadow-lg shadow-gray-500'>
+      <section className='bg-gray-800 min-h-screen rounded-2xl shadow-lg shadow-gray-500'>
         <div></div>
       </section>
       {/* Start of contact-section */}

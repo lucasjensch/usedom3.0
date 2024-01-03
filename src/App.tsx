@@ -3,11 +3,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useRef } from 'react';
 import './App.css'
-import Gallery from './gallery';
+import { Carousel } from "@material-tailwind/react";
 import {
   Ripple,
   initTE,
-  Carousel,
 } from "tw-elements";
 
 
@@ -152,27 +151,25 @@ function App() {
               Mehr Über Uns
             </a>
           </div>
-          <div data-aos="fade-left" data-aos-delay="200" className='mx-auto my-auto overflow-x-scroll pl-6'>
+          <div data-aos="fade-left" data-aos-delay="200" className=''>
 
-            <div className="flex flex-row gap-4 h-52">
-              <div className='absolute z-20 w-screen'>
-                <button className='bg-gray-300 w-6 rounded-full relative left-0'>{"<"}</button>
-                <button className='bg-gray-300 w-6 rounded-full relative right-0'>{">"}</button>
-              </div>
-              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
-                <img src="../src/assets/neue Bilder Usedomperle/Eingangstür.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
-              </div>
-              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
-                <img src="../src/assets/neue Bilder Usedomperle/Kamin-indoor.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
-              </div>
-              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
-                <img src="../src/assets/neue Bilder Usedomperle/couch.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
-              </div>
-              <div className="h-44 w-44 border-red-500 border rounded-2xl shadow-lg shadow-black">
-                <img src="../src/assets/neue Bilder Usedomperle/Schuppen-von-oben.png" alt="" className='rounded-2xl w-44 h-44 object-cover' />
-              </div>
-
-            </div>
+            <Carousel className="rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+                alt="image 1"
+                className="h-full w-full object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+                alt="image 2"
+                className="h-full w-full object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+                alt="image 3"
+                className="h-full w-full object-cover"
+              />
+            </Carousel>
           </div>
         </div>
 

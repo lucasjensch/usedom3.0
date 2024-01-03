@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useRef } from 'react';
-import './App.css'
-import { Carousel } from "@material-tailwind/react";
-import {
-  Ripple,
-  initTE,
-} from "tw-elements";
+import './App.css';
+import Gallery from './gallery';
+
+
 
 
 
@@ -59,9 +57,6 @@ function App() {
   interface ButtonElement extends HTMLElement {
     classList: DOMTokenList;
   }
-
-  initTE({ Ripple });
-  initTE({ Carousel });
 
 
   const mybutton: ButtonElement | null = document.getElementById("btn-back-to-top");
@@ -151,29 +146,9 @@ function App() {
               Mehr Über Uns
             </a>
           </div>
-          <div data-aos="fade-left" data-aos-delay="200" className=''>
 
-            <Carousel className="rounded-xl">
-              <img
-                src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-                alt="image 1"
-                className="h-full w-full object-cover"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-                alt="image 2"
-                className="h-full w-full object-cover"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-                alt="image 3"
-                className="h-full w-full object-cover"
-              />
-            </Carousel>
-          </div>
         </div>
-
-
+        <Gallery></Gallery>
 
       </section>
       <section className='bg-white min-h-screen'>

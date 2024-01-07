@@ -10,7 +10,7 @@ export default function Navbar() {
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-md shadow-gray-500 dark:bg-gray-800 fixed z-50 w-screen">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="#" className="flex items-center">
-                            <img src="../src/assets/logo.jpg" className="mr-3 h-12 sm:h-14" alt="Usedom Logo" />
+                            <img src="../src/assets/logo_transparent.png" className="mr-3 h-12 sm:h-14" alt="Usedom Logo" />
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
                         </a>
                         <div className="flex items-center lg:order-2">

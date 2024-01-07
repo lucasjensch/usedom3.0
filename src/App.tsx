@@ -3,7 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useRef } from 'react';
 import './App.css';
-import Gallery from './gallery';
+import Gallery from './gallery'
 
 
 
@@ -106,7 +106,7 @@ function App() {
       </button>
       <section id='home'>
         <div className='absolute flex flex-col items-center justify-center h-screen w-full mx-auto overflow-hidden z-40'>
-          <h1 className='px-2 font-extrabold text-white text-4xl md:text-8xl text-center uppercase'>Willkommen in der Usedomperle</h1>
+          <h1 className='px-2 font-extrabold text-gray-100 text-6xl md:text-8xl text-center uppercase'>Willkommen in der Usedomperle</h1>
           <p className='px-2 font-light text-white text-xl pt-8 md:text-3xl text-center'>Dem exklusiven Ferienhaus direkt am Strand
             in der Dünenresidenz Karlshagen auf Usedom
           </p>
@@ -117,7 +117,7 @@ function App() {
             <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
           </a>
         </div>
-        <div className="relative flex items-center justify-center z-10 h-screen overflow-hidden shadow-xl shadow-gray-400">
+        <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">
           <video
             autoPlay
             loop
@@ -134,29 +134,23 @@ function App() {
 
         </div>
 
-        <div id='more' className="grid grid-cols-1 py-24 mx-auto" data-aos="fade-right">
-          <div className="px-8 pb-12 lg:w-8/12 mx-auto">
-            <h2 className='font-extrabold text-3xl md:text-4xl'>Die Usedomperle - Ihr Traumferienhaus für jede Jahreszeit</h2>
-            <p className='font-light text-gray-500 text-lg py-12'>
-              Die Usedomperle ist ein traumhaftes Ferienhaus direkt am Strand.
-              Genießen Sie Ihren Urlaub in dieser gemütlichen Oase, die alles bietet, was Sie für einen erholsamen Aufenthalt benötigen.
-              Von atemberaubenden Meerblick bis hin zu modernen Annehmlichkeiten - die Usedomperle lässt keine Wünsche offen.
-            </p>
-            <a href="#about" className='shadow-md shadow-gray-500 py-3 px-5 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-indigo-700 hover:text-white'>
-              Mehr Über Uns
-            </a>
+
+
+      </section>
+
+      <section className=' bg-gray-100 min-h-screen'>
+        <div className='max-w-7xl border border-red-400 min-h-screen mx-auto flex justify-center items-center z-20'>
+          <div className="">
+
           </div>
 
         </div>
-        <Gallery></Gallery>
+      </section>
 
-      </section>
-      <section className='bg-white min-h-screen'>
-        <div className="">
+      <section className='-mt-6'>
+        <div className='max-w-7xl rounded-lg bg-gray-900 min-h-screen shadow-lg'>
+
         </div>
-      </section>
-      <section className='bg-gray-800 min-h-screen rounded-2xl shadow-lg shadow-gray-500'>
-        <div></div>
       </section>
       {/* Start of contact-section */}
       <section className="py-24" id='contact'>

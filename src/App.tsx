@@ -114,7 +114,7 @@ function App() {
           <div className="px-4">
             <p className="uppercase text-white font-extrabold text-lg">Hier können Sie</p>
             <h1 className="uppercase font-extrabold text-white leading-10 text-5xl">Tolle <br></br> Momente<br></br> erleben. </h1>
-            <a href="#about h-24 ">&rarr;</a>
+            <a href="#about h-24 bg-white">&rarr;</a>
           </div>
         </div>
         {/* <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">

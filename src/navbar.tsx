@@ -2,11 +2,38 @@ import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+
+
 export default function Navbar() {
+    interface ButtonElement extends HTMLElement {
+        classList: DOMTokenList;
+    }
+
+    const navbar: ButtonElement | null =
+        document.getElementById("show-navbar");
+
+    const scrollFunction = () => {
+        if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+        ) {
+            navbar?.classList.remove("hidden");
+        } else {
+            navbar?.classList.add("hidden");
+        }
+    };
+    const backToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    navbar?.addEventListener("click", backToTop);
+
+    window.addEventListener("scroll", scrollFunction);
+
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (
         <>
-            <header>
+            <header id="show-navbar" className="hidden">
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-md shadow-gray-500 dark:bg-gray-800 fixed z-50 w-screen">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="#" className="flex items-center">
@@ -54,7 +81,7 @@ export default function Navbar() {
                             <img data-aos="fade-left" data-aos-delay="100" className="mx-auto w-80" src="../src/assets/logo.jpg" alt="" />
                         </a>
 
-                        <ul className="flex flex-col mt-24 items-left">
+                        <ul className="flex flex-col mt-24 items-center">
                             <li>
                                 <a
                                     onClick={() => setNavbarOpen(false)}

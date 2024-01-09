@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useRef } from "react";
+import Pricing from './pricing'
 import "./App.css";
 
-const [PriceTable, SetPriceTable] = useState(false);
+
 
 function App() {
+
   useEffect(() => {
     // Create the first script element
     const script: HTMLScriptElement = document.createElement("script");
@@ -14,6 +16,8 @@ function App() {
       "https://www.ferienhausmiete.de/frontend/dist/src/js/modules/widget_price_view.min.js?id=47780";
     script.async = true;
     document.body.appendChild(script);
+
+
 
     // Cleanup: remove the scripts and container when the component is unmounted
     return () => {
@@ -76,25 +80,15 @@ function App() {
 
   window.addEventListener("scroll", scrollFunction);
 
+
   return (
     <>
-      {PriceTable ? (
-        <div className="h-screen fixed black/50">
-          <div className="h-10/12 w-3/4">
-            <button
-              onClick={() => SetPriceTable(false)}
-              className="absolute top-0 right-0 m-4"
-            >
-              <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
-            </button>
-          </div>
-        </div>
-      ) : null}
+
       <button
         type="button"
         data-te-ripple-init
         data-te-ripple-color="light"
-        className="z-40 !fixed bottom-5 right-5 hidden rounded-full bg-indigo-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-indigo-700 hover:shadow-lg focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-800 active:shadow-lg"
+        className="z-40 !fixed bottom-5 right-5 hidden rounded-full bg-blue-700 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-800 hover:shadow-lg focus:bg-blue-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-800 active:shadow-lg"
         id="btn-back-to-top"
       >
         <svg
@@ -108,27 +102,22 @@ function App() {
         >
           <path
             fill="currentColor"
+
             d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
           ></path>
         </svg>
       </button>
-      <section id="home">
-        <div className="absolute flex flex-col items-center justify-center h-screen w-full mx-auto overflow-hidden z-40">
-          <h1 className="px-2 font-extrabold text-gray-100 text-5xl md:text-8xl text-center uppercase">
-            Willkommen in der Usedomperle
-          </h1>
-          <p className="px-2 font-light text-white text-xl pt-8 md:text-3xl text-center">
-            Dem exklusiven Ferienhaus direkt am Strand in der Dünenresidenz
-            Karlshagen auf Usedom
-          </p>
+
+
+      <section id="home" className="h-screen">
+        <div className="bg-blue-600 flex items-center h-full bg-no-repeat bg-cover">
+          <div className="px-4">
+            <p className="uppercase text-white font-extrabold text-lg">Hier können Sie</p>
+            <h1 className="uppercase font-extrabold text-white leading-10 text-5xl">Tolle <br></br> Momente<br></br> erleben. </h1>
+            <a href="#about h-24 ">&rarr;</a>
+          </div>
         </div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
-          <a href="#more" className="animate-bounce grid-cols-1 grid">
-            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
-            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
-          </a>
-        </div>
-        <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">
+        {/* <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">
           <video
             autoPlay
             loop
@@ -138,107 +127,201 @@ function App() {
             <source src="../src/assets/intro_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
       </section>
 
-      <section className=" bg-gray-100 min-h-screen">
-        <div className="max-w-7xl border border-red-400 min-h-screen mx-auto flex justify-center items-center z-20">
+      <section id="about" className="-mt-44 min-h-screen bg-white">
+        <div className=" max-w-7xl border border-red-400 min-h-screen mx-auto flex justify-center items-center z-20">
           <div className=""></div>
         </div>
       </section>
 
-      <section className="-mt-6 rounded-xl bg-gray-900 shadow-lg w-full shadow-gray-400 text-center">
-        <h2 className="py-6 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-100 dark:text-white">
-          Mietpreise und Buchungskalender
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="max-w-7xl border border-red-400 mx-auto pt-8 px-2 md:py-24">
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/docs/images/blog/image-1.jpg"
-                  alt=""
-                />
-              </a>
-              <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Mietpreise für das Jahr 2024
-                </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Hier finden Sie die Preise pro Nacht für 2024. Von März bis
-                  September inkl. Strandkorb.
-                </p>
-                <button
-                  onClick={() => {
-                    SetPriceTable(true);
-                  }}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Unsere Preise
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </button>
-              </div>
+      <Pricing></Pricing>
+
+      {/*Start of Review section*/}
+      <section className='pt-24' id='reviews'>
+        <div className="mx-auto text-center max-w-4xl">
+          <h3
+            className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
+            Rezensionen
+          </h3>
+          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
+            Uns ist wichtig, was unsere Besucher von uns denken. Daher haben wir einige Rezensionen für Sie zusammengestellt, die die Erfahrung in der Usedomperle optimal widerspiegeln.
+            Zögern Sie also nicht und teilen Sie gerne auch Ihre eigenen Eindrücke in einer Rezension mit.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 text-center mx-auto max-w-3xl md:grid-cols-2 py-8" data-aos="fade-left">
+
+          <div className="bg-gray-100 p-6 rounded-xl shadow-lg shadow-black/30 mb-12 md:mb-0 w-60 justify-center items-center mx-auto">
+            <div className="mb-6 flex justify-center">
+              <img
+                src="../src/assets/elderly-man-icon.png"
+                className="w-32 rounded-full shadow-lg shadow-gray-500 dark:shadow-black/30" />
             </div>
+            <h5 className="mb-4 text-xl font-semibold">Joachim Breuhahn</h5>
+            <p className="mb-4 font-light text-gray-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                className="inline-block h-7 w-7 pr-2 text-black"
+                viewBox="0 0 24 24">
+                <path
+                  d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+              </svg>
+              War dort ein schöner Sommerurlaub, herrlicher Strand und für Groß und Klein viele schöne Veranstaltungen
+              und prima Minigolf-Anlage. Alles sehr empfehlenswert.
+            </p>
+            <ul className="mb-0 flex items-center justify-center">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+
+            </ul>
           </div>
 
-          <div className="max-w-7xl border md:py-24 pb-8 px-2 border-red-400 mx-auto">
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/docs/images/blog/image-1.jpg"
-                  alt=""
-                />
-              </a>
-              <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Mietpreise für das Jahr 2025
-                </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Hier finden Sie die Preise pro Nacht für 2025. Von März bis
-                  September inkl. Strandkorb.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Unsere Preise
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
+          <div className="bg-gray-100 p-6 rounded-xl shadow-lg shadow-black/30 mb-12 md:mb-0 mx-auto w-60">
+            <div className="mb-6 flex justify-center">
+              <img
+                src="https://www.shareicon.net/data/2017/01/06/868320_people_512x512.png"
+                className="w-32 rounded-full shadow-lg shadow-gray-500 dark:shadow-black/30" />
             </div>
+            <h5 className="mb-4 text-xl font-semibold">Gunnar Lindemann</h5>
+            <p className="mb-4 font-light text-gray-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                className="inline-block h-7 w-7 pr-2 text-black"
+                viewBox="0 0 24 24">
+                <path
+                  d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+              </svg>
+              Ein super schönes Ferienhaus, gut ausgestattet, gepflegt, eine tolle Lage und ein kurzer Weg zum Strand!
+            </p>
+            <ul className="mb-0 flex items-center justify-center">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-yellow-500">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd" />
+                </svg>
+              </li>
+
+            </ul>
           </div>
         </div>
       </section>
+      {/*End of Review section*/}
+
       {/* Start of contact-section */}
       <section className="py-24" id="contact">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
@@ -290,7 +373,7 @@ function App() {
             <button
               data-aos="fade-right"
               type="submit"
-              className="shadow-md shadow-gray-500 py-3 px-5 text-md font-medium text-center text-white bg-indigo-500 rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="shadow-md shadow-gray-500 py-3 px-5 text-md font-medium text-center text-white bg-blue-700 rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Nachricht senden
             </button>
@@ -337,6 +420,7 @@ function App() {
           </span>
         </div>
       </footer>
+
     </>
   );
 }

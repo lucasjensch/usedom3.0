@@ -15,8 +15,8 @@ export default {
       backgroundImage: {
         'parallax': 'url("../src/assets/seebruecke-wallpaper.jpg")',
         'logo': 'url("../src/assets/logo.jpg")',
-        'wallpaper': 'url("../src/assets/usedomperle_neues_hintergrundbild.jpg")',
-        'wallpaper-mobile': 'url("../src/assets/neue Bilder Usedomperle/Eingangstür.png")'
+        'waves': 'url("../src/assets/waves.svg")',
+        'wallpaper': 'url("../src/assets/water-wallpaper.jpeg")',
       }
     },
   },

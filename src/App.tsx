@@ -110,27 +110,10 @@ function App() {
 
 
       <section id="home" className="h-screen">
-        <div className="bg-blue-600 flex items-center h-full bg-no-repeat bg-cover">
-          <div className="px-4">
-            <p className="uppercase text-white font-extrabold text-lg">Hier können Sie</p>
-            <h1 className="uppercase font-extrabold text-white leading-10 text-5xl">Tolle <br></br> Momente<br></br> erleben. </h1>
-            <a href="#about h-24 bg-white">&rarr;</a>
-          </div>
-        </div>
-        {/* <div className="relative flex items-center justify-center h-screen overflow-hidden shadow-xl shadow-gray-400">
-          <video
-            autoPlay
-            loop
-            muted
-            className="absolute z-2 w-auto min-w-full min-h-full max-w-none"
-          >
-            <source src="../src/assets/intro_video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div> */}
+
       </section>
 
-      <section id="about" className="-mt-44 min-h-screen bg-white">
+      <section id="about" className="-mt-40 min-h-screen bg-white">
         <div className=" max-w-7xl border border-red-400 min-h-screen mx-auto flex justify-center items-center z-20">
           <div className=""></div>
         </div>

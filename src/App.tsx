@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useRef } from "react";
+import Gallery from "./gallery";
+import Navigation from './navigation'
 import Pricing from './pricing'
 import "./App.css";
 
@@ -108,27 +110,47 @@ function App() {
         </svg>
       </button>
 
+      <Navigation></Navigation>
 
-      <section id="home" className="h-screen">
-
+      <section id="home" className="rounded-bl-xl rounded-br-xl">
+        <div className="w-full h-[90vh] bg-wallpaper bg-no-repeat bg-cover">
+          <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
+          <div className="max-w-[1140px] m-auto">
+            <div className="absolute top-[40%] w-full md:-[50%] max-w-[600px] h-full flex flex-col text-white p-4">
+              <h1 className="font-extrabold text-5xl md:text-6xl">Die Usedomperle</h1>
+              <h2 className="italic py-4">Ihr exklusives Ferienhaus direkt am Strand</h2>
+              <p>
+                Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel Usedom, beeindruckt durch ihre erstklassige Ausstattung und charmante Atmosphäre. Mit stilvoller Einrichtung, moderner Technologie und einem idyllischen Ambiente bietet sie unvergessliche Urlaubsmomente.
+              </p>
+              <a href="#contact" className="bg-white w-max rounded-xl px-4 py-2 text-black hover:bg-gray-100 duration-150 decoration-none mt-6">Buchen Sie jetzt &rarr;</a>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="about" className="-mt-40 min-h-screen bg-white">
-        <div className=" max-w-7xl border border-red-400 min-h-screen mx-auto flex justify-center items-center z-20">
-          <div className=""></div>
+      <section id="about" className="">
+        <div className="max-w-[1140px] m-auto w-full flex text-center h-screen py-6 flex-col">
+          <div className="px-4">
+            <h2 className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800  dark:text-neutral-200">Unsere Ausstattung</h2>
+            <p className="">
+              Wir überzeugen mit einer raffinierten und eleganten Einrichtung, die Gemütlichkeit verspricht.
+              Die voll ausgestattete
+              Küche und das stilvolle Wohnzimmer sind das Highlight des Hauses. Wir bieten außerdem einen Strandkorb von Mai bis September.</p>
+          </div>
         </div>
       </section>
 
       <Pricing></Pricing>
+      <Gallery></Gallery>
 
       {/*Start of Review section*/}
-      <section className='pt-24' id='reviews'>
+      <section className='mt-16 pt-8' id='reviews'>
         <div className="mx-auto text-center max-w-4xl">
           <h3
             className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
             Rezensionen
           </h3>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
+          <p className="mb-8 lg:mb-16 font-light text-center px-4 text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
             Uns ist wichtig, was unsere Besucher von uns denken. Daher haben wir einige Rezensionen für Sie zusammengestellt, die die Erfahrung in der Usedomperle optimal widerspiegeln.
             Zögern Sie also nicht und teilen Sie gerne auch Ihre eigenen Eindrücke in einer Rezension mit.
           </p>
@@ -155,7 +177,7 @@ function App() {
               und prima Minigolf-Anlage. Alles sehr empfehlenswert.
             </p>
             <ul className="mb-0 flex items-center justify-center">
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -167,7 +189,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -179,7 +201,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -191,7 +213,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -203,7 +225,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -238,7 +260,7 @@ function App() {
               Ein super schönes Ferienhaus, gut ausgestattet, gepflegt, eine tolle Lage und ein kurzer Weg zum Strand!
             </p>
             <ul className="mb-0 flex items-center justify-center">
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -250,7 +272,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -262,7 +284,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -274,7 +296,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -286,7 +308,7 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-              <li>
+              <li className="p-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -298,15 +320,15 @@ function App() {
                     clip-rule="evenodd" />
                 </svg>
               </li>
-
             </ul>
           </div>
         </div>
+
       </section>
       {/*End of Review section*/}
 
       {/* Start of contact-section */}
-      <section className="py-24" id="contact">
+      <section className="py-20 h-screen" id="contact">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
           <div className="min-w-4xl">
             <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
@@ -366,20 +388,20 @@ function App() {
 
       <footer className="bg-gray-800 shadow text-center">
         <ul className="pt-4">
-          <li>
+          <li className="p-0">
             <p className="text-gray-100 text-xs font-light">
               Ferienhaus "Die Usedomperle"
             </p>
           </li>
-          <li>
+          <li className="p-0">
             <p className="text-gray-100 text-xs font-light">
               Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}
             </p>
           </li>
-          <li>
+          <li className="p-0">
             <p className="text-gray-100 text-xs font-light">01520-8870816</p>
           </li>
-          <li>
+          <li className="p-0">
             <a
               href="mailto:info@die-usedomperle"
               className="text-indigo-300 text-xs font-light"

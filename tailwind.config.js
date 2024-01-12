@@ -6,10 +6,11 @@ export default {
   ],
   theme: {
     screens: {
-      'xxs': '387px',
+      'xxs': '375px',
       'xs': '425px',
       'md': '768px',
       'lg': '1024px',
+      'xl': '1280px',
     },
     extend: {
       backgroundImage: {

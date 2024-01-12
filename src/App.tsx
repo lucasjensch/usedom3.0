@@ -112,13 +112,13 @@ function App() {
 
       <Navigation></Navigation>
 
-      <section id="home" className="rounded-bl-xl rounded-br-xl">
-        <div className="w-full h-[90vh] bg-wallpaper bg-no-repeat bg-cover">
+      <section id="home" className="">
+        <div className="w-full h-screen bg-wallpaper bg-no-repeat bg-cover">
           <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
           <div className="max-w-[1140px] m-auto">
-            <div className="absolute top-[40%] w-full md:-[50%] max-w-[600px] h-full flex flex-col text-white p-4">
-              <h1 className="font-extrabold text-5xl md:text-6xl">Die Usedomperle</h1>
-              <h2 className="italic py-4">Ihr exklusives Ferienhaus direkt am Strand</h2>
+            <div className="absolute top-[30%] w-full md:-[50%] max-w-[600px] md:max-w-[800px] h-full flex flex-col text-white p-4">
+              <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-8xl">Die Usedomperle</h1>
+              <h2 className="italic py-4 xxs:py-6">Ihr exklusives Ferienhaus direkt am Strand</h2>
               <p>
                 Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel Usedom, beeindruckt durch ihre erstklassige Ausstattung und charmante Atmosphäre. Mit stilvoller Einrichtung, moderner Technologie und einem idyllischen Ambiente bietet sie unvergessliche Urlaubsmomente.
               </p>
@@ -133,9 +133,7 @@ function App() {
           <div className="px-4">
             <h2 className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800  dark:text-neutral-200">Unsere Ausstattung</h2>
             <p className="">
-              Wir überzeugen mit einer raffinierten und eleganten Einrichtung, die Gemütlichkeit verspricht.
-              Die voll ausgestattete
-              Küche und das stilvolle Wohnzimmer sind das Highlight des Hauses. Wir bieten außerdem einen Strandkorb von Mai bis September.</p>
+</p>
           </div>
         </div>
       </section>
@@ -328,9 +326,9 @@ function App() {
       {/*End of Review section*/}
 
       {/* Start of contact-section */}
-      <section className="py-20 h-screen" id="contact">
+      <section className="py-20 min-h-screen" >
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
-          <div className="min-w-4xl">
+          <div className="min-w-4xl" id="contact">
             <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
               Kontaktieren Sie uns
             </h2>

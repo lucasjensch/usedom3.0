@@ -6,6 +6,7 @@ import Gallery from "./gallery";
 import Navigation from './navigation'
 import Pricing from './pricing'
 import "./App.css";
+import { button } from "@material-tailwind/react";
 
 
 
@@ -82,6 +83,14 @@ function App() {
 
   window.addEventListener("scroll", scrollFunction);
 
+  const [estate, setEstate] = useState(false);
+  const handleEstate = () => {
+    setEstate(!estate);
+  }
+  const [button, setButton] = useState(true);
+  const handleButton = () => {
+    setButton(!button);
+  }
 
   return (
     <>
@@ -117,7 +126,7 @@ function App() {
           <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
           <div className="max-w-[1140px] m-auto">
             <div className="absolute top-[30%] w-full md:-[50%] max-w-[600px] md:max-w-[800px] h-full flex flex-col text-white p-4">
-              <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-8xl">Die Usedomperle</h1>
+              <h1 className="font-extrabold text-5xl xs:text-7xl lg:text-8xl">Die Usedomperle</h1>
               <h2 className="italic py-4 xxs:py-6">Ihr exklusives Ferienhaus direkt am Strand</h2>
               <p>
                 Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel Usedom, beeindruckt durch ihre erstklassige Ausstattung und charmante Atmosphäre. Mit stilvoller Einrichtung, moderner Technologie und einem idyllischen Ambiente bietet sie unvergessliche Urlaubsmomente.
@@ -125,16 +134,169 @@ function App() {
               <a href="#contact" className="bg-white w-max rounded-xl px-4 py-2 text-black hover:bg-gray-100 duration-150 decoration-none mt-6">Buchen Sie jetzt &rarr;</a>
             </div>
           </div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
+            <a href='#about' className="animate-bounce grid-cols-1 grid">
+              <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+              <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+            </a>
+          </div>
         </div>
       </section>
 
       <section id="about" className="">
-        <div className="max-w-[1140px] m-auto w-full flex text-center h-screen py-6 flex-col">
+        <div className="max-w-[1140px] m-auto w-full flex text-center min-h-screen py-6 flex-col">
           <div className="px-4">
             <h2 className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800  dark:text-neutral-200">Unsere Ausstattung</h2>
-            <p className="">
-</p>
+            <div className="bg-gray-100 rounded-xl shadow-lg shadow-gray-400">
+              <ul className="text-left -space-y-6">
+                <h3 className="text-lg pl-4 py-4 font-bold underline">Wir bieten für Ihren Urlaub:</h3>
+                <li>
+                  von Mai bis Sep. einen Strandkorb am Strand inkl.
+                </li>
+                <li>
+                  Das Ferienhaus ist für die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als Personen, weitere Aufbettungen gegen Aufpreis möglich)
+                </li>
+                <li>
+                  ca. 100 m² Wohn-/Nutzfläche
+                </li>
+                <li>
+                  Fußbodenheizung im gesamten Haus
+                </li>
+                <li>
+                  2 Schlafzimmer im 1. OG (Betten 1,80 m x 2 m)
+                </li>
+                <li>
+                  1 Schlafzimmer im 2.OG (Bett 1,60 m x 2 m)
+                </li>
+                <div className="flex justify-center py-2">
+                  <button className={button ? "block" : "hidden"} onClick={() => {
+                    handleEstate();
+                    handleButton();
+                  }}>
+                    Mehr...
+                  </button>
+                </div>
+
+                <div className={
+                  estate ? "block"
+                    : "hidden"
+                }>
+                  <ul className="-space-y-6">
+                    <li>
+                      1 Bad im EG mit Dusche
+                    </li>
+                    <li>
+                      1 Bad im 1. OG mit Dusche, Infrarot-Sauna, Haartrockner
+                    </li>
+                    <li>
+                      Küche mit Kaffeemaschine, Wasserkocher, Toaster, Backofen und 4 Platten-Herd, Geschirrspüler, Kühlschrank mit Gefrierfach, Mikrowelle...
+                    </li>
+                    <li>
+                      Waschmaschine
+                    </li>
+                    <li>
+                      Kamin
+                    </li>
+                    <li>
+                      Internet (Wlan)
+                    </li>
+                    <li>
+                      LED-Smart-TV, Blu-Ray Player, Radio
+                    </li>
+                    <li>
+                      Fahrradschuppen mit 4 Fahrrädern 28" und 1 Kinderfahrrädern 24" (Benutzung auf eigene Gefahr)
+                    </li>
+                    <li>
+                      Grillplatz
+                    </li>
+                    <li>
+                      Terrasse mit Gartenmöbeln und Strandkorb
+                    </li>
+                    <li>
+                      1 Parkplatz direkt am Haus, weitere in unmittelbarer Nähe
+                    </li>
+                    <li>
+                      uvm...
+                    </li>
+                    <li>
+                      Bitte achten Sie darauf, dass Haustiere nicht gestattet sind
+                    </li>
+                    <div className="flex justify-center py-2 w-full">
+                      <button className="" onClick={() => {
+                        handleEstate();
+                        handleButton();
+                      }}>
+                        Weniger anzeigen
+                      </button>
+                    </div>
+                  </ul>
+
+                </div>
+
+              </ul>
+
+            </div>
+            <div className="flex py-4">
+              <a href="#fotos" className="shadow-md shadow-gray-400 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Zu den Fotos
+                <svg
+                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
+          <div className="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
+            <h1 className="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">Beach House in Collingwood</h1>
+            <p className="text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400">Entire house</p>
+          </div>
+          <div className="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+            <img src="/beach-house.jpg" alt="" className="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy" />
+            <img src="/beach-house-interior-1.jpg" alt="" className="hidden w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
+            <img src="/beach-house-interior-2.jpg" alt="" className="hidden w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy" />
+          </div>
+          <dl className="mt-4 px- text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
+            <dt className="sr-only">Reviews</dt>
+            <dd className="text-indigo-600 flex items-center dark:text-indigo-400">
+              <svg width="24" height="24" fill="none" aria-hidden="true" className="mr-1 stroke-current dark:stroke-indigo-500">
+                <path d="m12 5 2 5h5l-4 4 2.103 5L12 16l-5.103 3L9 14l-4-4h5l2-5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>4.89 <span className="text-slate-400 font-normal">(128)</span></span>
+            </dd>
+            <dt className="sr-only">Location</dt>
+            <dd className="flex items-center">
+              <svg width="2" height="2" aria-hidden="true" fill="currentColor" className="mx-3 text-slate-300">
+                <circle cx="1" cy="1" r="1" />
+              </svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="mr-1 text-slate-400 dark:text-slate-500" aria-hidden="true">
+                <path d="M18 11.034C18 14.897 12 19 12 19s-6-4.103-6-7.966C6 7.655 8.819 5 12 5s6 2.655 6 6.034Z" />
+                <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+              </svg>
+              Collingwood, Ontario
+            </dd>
+          </dl>
+          <div className="mt-4 px-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
+            <button type="button" className="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg">Check availability</button>
+          </div>
+          <p className="mt-4 px-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400">
+            This sunny and spacious room is for those traveling light and looking for a comfy and cosy place to lay their head for a night or two. This beach house sits in a vibrant neighborhood littered with cafes, pubs, restaurants and supermarkets and is close to all the major attractions such as Edinburgh Castle and Arthur's Seat.
+          </p>
         </div>
       </section>
 

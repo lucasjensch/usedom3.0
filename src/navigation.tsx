@@ -10,7 +10,7 @@ function Navigation() {
   };
 
   return (
-    <div className="w-full min-h-[50px] flex justify-between items-center absolute top-0 z-10">
+    <div className="lg:bg-white w-full min-h-[50px] flex justify-between items-center absolute top-0 z-10 lg:shadow-lg lg:shadow-gray-400">
       <div className="flex items-center">
         <img
           src="../src/assets/logo_transparent.png"
@@ -19,7 +19,7 @@ function Navigation() {
         />
       </div>
 
-      <ul className="hidden lg:flex px-4 text-white">
+      <ul className="hidden lg:flex px-4 lg:text-black">
         <li className="text-base">
           <a href="#home">Startseite</a>
         </li>
@@ -40,11 +40,11 @@ function Navigation() {
         <div className="flex items-center px-6">
           <AiFillMail
             size={20}
-            className="mr-2 text-[var(--primary-dark)]"
+            className="mr-2 text-blue-700"
           ></AiFillMail>
           <a
             href="mailto:info@die-usedomperle.de"
-            className="text-white hidden lg:block"
+            className="text-blue-700 hidden lg:block"
           >
             info@die-usedomperle.de
           </a>
@@ -52,9 +52,9 @@ function Navigation() {
         <div className="flex items-center px-6">
           <AiFillPhone
             size={20}
-            className="mr-2 text-[var(--primary-dark)]"
+            className="mr-2 text-blue-700"
           ></AiFillPhone>
-          <p className="text-white hidden lg:block">0 1520/88 70 816</p>
+          <p className="text-blue-700 hidden lg:block">0 1520/88 70 816</p>
         </div>
       </div>
       {/* Hamburger Icon */}
@@ -102,7 +102,7 @@ function Navigation() {
             <div className="flex items-center px-6">
               <AiFillMail
                 size={20}
-                className="mr-2 text-[var(--primary-dark)]"
+                className="mr-2 text-blue-700"
               ></AiFillMail>
               <a className="" href="mailto:info@die-usedomperle.de">
                 info@die-usedomperle.de
@@ -111,7 +111,7 @@ function Navigation() {
             <div className="flex items-center px-6">
               <AiFillPhone
                 size={20}
-                className="mr-2 text-[var(--primary-dark)]"
+                className="mr-2 text-blue-700"
               ></AiFillPhone>
               <p>+49 (0) 1520 88 70 816</p>
             </div>

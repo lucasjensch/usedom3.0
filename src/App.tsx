@@ -86,6 +86,18 @@ function App() {
   const handleButton = () => {
     setButton(!button);
   };
+  const [FAQ1, setFAQ1] = useState(false);
+  const handleFAQ1 = () => {
+    setFAQ1(!FAQ1);
+  };
+  const [FAQ2, setFAQ2] = useState(false);
+  const handleFAQ2 = () => {
+    setFAQ2(!FAQ2);
+  };
+  const [FAQ3, setFAQ3] = useState(false);
+  const handleFAQ3 = () => {
+    setFAQ3(!FAQ3);
+  };
 
   return (
     <>
@@ -115,133 +127,165 @@ function App() {
       <Navigation></Navigation>
 
       <section id="home" className="">
-        <div className="w-full min-h-screen bg-wallpaper bg-no-repeat bg-cover">
-          <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
-          <div className="max-w-[1140px] m-auto">
-            <div className="absolute top-[30%] w-full md:-[50%] max-w-[600px] md:max-w-[800px] h-full flex flex-col text-white p-4">
-              <h1 className="font-extrabold text-5xl xs:text-7xl lg:text-8xl">
-                Die Usedomperle
-              </h1>
-              <h2 className="italic py-4 xxs:py-6">
-                Ihr exklusives Ferienhaus direkt am Strand
-              </h2>
-              <p>
-                Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel
-                Usedom, beeindruckt durch ihre erstklassige Ausstattung und
-                charmante Atmosphäre. Mit stilvoller Einrichtung, moderner
-                Technologie und einem idyllischen Ambiente bietet sie
-                unvergessliche Urlaubsmomente.
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <div className="w-full h-screen bg-wallpaper bg-no-repeat bg-cover">
+            <div className="md:hidden w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
+          </div>
+          <div className="relative hidden md:flex flex-col justify-center mx-auto p-4 h-full xl:col-span-2">
+            <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-7xl">
+              Die Usedomperle
+            </h1>
+            <h2 className="italic py-4 xxs:py-6">
+              Ihr exklusives Ferienhaus direkt am Strand
+            </h2>
+            <p className="max-w-[800px]">
+              Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel
+              Usedom, beeindruckt durch ihre erstklassige Ausstattung und
+              charmante Atmosphäre. Mit stilvoller Einrichtung, moderner
+              Technologie und einem idyllischen Ambiente bietet sie
+              unvergessliche Urlaubsmomente.
+            </p>
+            <div className="py-12">
               <a
                 href="#contact"
-                className="bg-white w-max rounded-xl px-4 py-2 text-black hover:bg-gray-100 duration-150 decoration-none mt-6"
+                className="bg-gradient-to-r from-blue-700 to-blue-500 w-max rounded-2xl px-6 py-4 text-white decoration-none hover:to-blue-300 hover:text-white hover:duration-500"
               >
                 Buchen Sie jetzt &rarr;
               </a>
             </div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
+              <a href="#about" className="animate-bounce grid-cols-1 grid">
+                <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
+                <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
+              </a>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
-            <a href="#about" className="animate-bounce grid-cols-1 grid">
-              <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
-              <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+        </div>
+
+        <div className="max-w-[1140px] m-auto">
+          <div className="md:hidden absolute top-[30%] w-full md:-[50%] max-w-[600px] md:max-w-[800px] flex flex-col text-white p-4">
+            <h1 className="font-extrabold text-5xl xs:text-7xl lg:text-8xl">
+              Die Usedomperle
+            </h1>
+            <h2 className="italic py-4 xxs:py-6">
+              Ihr exklusives Ferienhaus direkt am Strand
+            </h2>
+            <p>
+              Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel
+              Usedom, beeindruckt durch ihre erstklassige Ausstattung und
+              charmante Atmosphäre. Mit stilvoller Einrichtung, moderner
+              Technologie und einem idyllischen Ambiente bietet sie
+              unvergessliche Urlaubsmomente.
+            </p>
+            <a
+              href="#contact"
+              className="bg-white w-max rounded-xl px-4 py-2 text-black hover:bg-gray-100 duration-150 decoration-none mt-6"
+            >
+              Buchen Sie jetzt &rarr;
             </a>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40 md:hidden">
+          <a href="#about" className="animate-bounce grid-cols-1 grid">
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
+          </a>
+        </div>
+
       </section>
 
       <section id="about" className="">
-        <div className="max-w-[1140px] m-auto w-full flex text-center min-h-screen py-6 flex-col">
-          <div className="px-4">
-            <h2 className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800  dark:text-neutral-200">Unsere Ausstattung</h2>
-            <div className="bg-gray-100 rounded-xl shadow-lg shadow-gray-400">
-              <ul className="text-left -space-y-6">
-                <h3 className="text-lg pl-4 py-4 font-bold underline">Wir bieten für Ihren Urlaub:</h3>
-                <li>
-                  von Mai bis Sep. einen Strandkorb am Strand inkl.
-                </li>
-                <li>
-                  Das Ferienhaus ist für die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als Personen, weitere Aufbettungen gegen Aufpreis möglich)
-                </li>
-                <li>
-                  ca. 100 m² Wohn-/Nutzfläche
-                </li>
-                <li>
-                  Fußbodenheizung im gesamten Haus
-                </li>
-                <li>
-                  2 Schlafzimmer im 1. OG (Betten 1,80 m x 2 m)
-                </li>
-                <li>
-                  1 Schlafzimmer im 2.OG (Bett 1,60 m x 2 m)
-                </li>
-                <div className="flex justify-center py-2">
-                  <button className={button ? "block" : "hidden"} onClick={() => {
-                    handleEstate();
-                    handleButton();
-                  }}>
-                    Mehr...
-                  </button>
-                </div>
 
-                <div className={
-                  estate ? "block"
-                    : "hidden"
-                }>
-                  <ul className="-space-y-6">
-                    <li>
-                      1 Bad im EG mit Dusche
-                    </li>
-                    <li>
-                      1 Bad im 1. OG mit Dusche, Infrarot-Sauna, Haartrockner
-                    </li>
-                    <li>
-                      Küche mit Kaffeemaschine, Wasserkocher, Toaster, Backofen und 4 Platten-Herd, Geschirrspüler, Kühlschrank mit Gefrierfach, Mikrowelle...
-                    </li>
-                    <li>
-                      Waschmaschine
-                    </li>
-                    <li>
-                      Kamin
-                    </li>
-                    <li>
-                      Internet (Wlan)
-                    </li>
-                    <li>
-                      LED-Smart-TV, Blu-Ray Player, Radio
-                    </li>
-                    <li>
-                      Fahrradschuppen mit 4 Fahrrädern 28" und 1 Kinderfahrrädern 24" (Benutzung auf eigene Gefahr)
-                    </li>
-                    <li>
-                      Grillplatz
-                    </li>
-                    <li>
-                      Terrasse mit Gartenmöbeln und Strandkorb
-                    </li>
-                    <li>
-                      1 Parkplatz direkt am Haus, weitere in unmittelbarer Nähe
-                    </li>
-                    <li>
-                      uvm...
-                    </li>
-                    <li>
-                      Bitte achten Sie darauf, dass Haustiere nicht gestattet sind
-                    </li>
-                    <div className="flex justify-center py-2 w-full">
-                      <button className="" onClick={() => {
-                        handleEstate();
-                        handleButton();
-                      }}>
-                        Weniger anzeigen
-                      </button>
-                    </div>
-                  </ul>
+        <h2 className="py-8 text-3xl md:text-4xl font-extrabold text-neutral-800 text-center">Unsere Ausstattung</h2>
+        <div className="max-w-[1440px] min-h-screen grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className=" shadow-gray-400 max-w-xl flex flex-col items-center mx-auto">
+            <ul className="text-left m-4 -space-y-6 bg-gray-100 rounded-xl shadow-lg">
+              <h3 className="text-lg pl-4 py-4 font-bold underline">Wir bieten für Ihren Urlaub:</h3>
+              <li>
+                von Mai bis Sep. einen Strandkorb am Strand inkl.
+              </li>
+              <li>
+                Das Ferienhaus ist für die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als Personen, weitere Aufbettungen gegen Aufpreis möglich)
+              </li>
+              <li>
+                ca. 100 m² Wohn-/Nutzfläche
+              </li>
+              <li>
+                Fußbodenheizung im gesamten Haus
+              </li>
+              <li>
+                2 Schlafzimmer im 1. OG (Betten 1,80 m x 2 m)
+              </li>
+              <li>
+                1 Schlafzimmer im 2.OG (Bett 1,60 m x 2 m)
+              </li>
+              <div className="flex justify-center py-2">
+                <button className={button ? "block" : "hidden"} onClick={() => {
+                  handleEstate();
+                  handleButton();
+                }}>
+                  <p className="">Mehr...</p>
+                </button>
+              </div>
 
-                </div>
+              <div className={
+                estate ? "block"
+                  : "hidden"
+              }>
+                <ul className="-space-y-6">
+                  <li>
+                    1 Bad im EG mit Dusche
+                  </li>
+                  <li>
+                    1 Bad im 1. OG mit Dusche, Infrarot-Sauna, Haartrockner
+                  </li>
+                  <li>
+                    Küche mit Kaffeemaschine, Wasserkocher, Toaster, Backofen und 4 Platten-Herd, Geschirrspüler, Kühlschrank mit Gefrierfach, Mikrowelle...
+                  </li>
+                  <li>
+                    Waschmaschine
+                  </li>
+                  <li>
+                    Kamin
+                  </li>
+                  <li>
+                    Internet (Wlan)
+                  </li>
+                  <li>
+                    LED-Smart-TV, Blu-Ray Player, Radio
+                  </li>
+                  <li>
+                    Fahrradschuppen mit 4 Fahrrädern 28" und 1 Kinderfahrrädern 24" (Benutzung auf eigene Gefahr)
+                  </li>
+                  <li>
+                    Grillplatz
+                  </li>
+                  <li>
+                    Terrasse mit Gartenmöbeln und Strandkorb
+                  </li>
+                  <li>
+                    1 Parkplatz direkt am Haus, weitere in unmittelbarer Nähe
+                  </li>
+                  <li>
+                    uvm...
+                  </li>
+                  <li>
+                    Bitte achten Sie darauf, dass Haustiere nicht gestattet sind
+                  </li>
+                  <div className="flex justify-center py-2 w-full">
+                    <button className="" onClick={() => {
+                      handleEstate();
+                      handleButton();
+                    }}>
+                      Weniger anzeigen
+                    </button>
+                  </div>
+                </ul>
 
-              </ul>
+              </div>
 
-            </div>
+            </ul>
             <div className="flex py-4">
               <a href="#fotos" className="shadow-md shadow-gray-400 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Zu den Fotos
@@ -262,6 +306,9 @@ function App() {
                 </svg>
               </a>
             </div>
+          </div>
+          <div className="">
+            <p>hallo</p>
           </div>
         </div>
       </section>
@@ -481,9 +528,9 @@ function App() {
       {/*End of Review section*/}
 
       {/* Start of contact-section */}
-      <section className="py-20 min-h-screen">
+      <section className="py-20 min-h-screen" id="contact">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
-          <div className="min-w-4xl" id="contact">
+          <div className="min-w-4xl" >
             <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
               Kontaktieren Sie uns
             </h2>
@@ -492,6 +539,77 @@ function App() {
               nur Feedback geben? Wir stehen für Sie bereit.
             </p>
           </div>
+
+
+          <div id="accordion-collapse" data-accordion="collapse" className="pb-8">
+            <h2 id="accordion-collapse-heading-1">
+              <button onClick={handleFAQ1} type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                <span>What is Flowbite?</span>
+                <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                </svg>
+              </button>
+            </h2>
+            {FAQ1 ?
+              <div id="accordion-collapse-body-3" className="" aria-labelledby="accordion-collapse-heading-3">
+                <div className="p-5 border border-t-0 border-gray-200  dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">1</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                  <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                    <li><a href="https://flowbite.com/pro/" className="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                    <li><a href="https://tailwindui.com/" rel="nofollow" className="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                  </ul>
+                </div>
+              </div>
+              : null}
+            <h2 id="accordion-collapse-heading-2">
+              <button onClick={handleFAQ2} type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+                <span>Is there a Figma file available?</span>
+                <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                </svg>
+              </button>
+            </h2>
+            {FAQ2 ?
+              <div id="accordion-collapse-body-3" className="" aria-labelledby="accordion-collapse-heading-3">
+                <div className="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">2</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                  <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                    <li><a href="https://flowbite.com/pro/" className="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                    <li><a href="https://tailwindui.com/" rel="nofollow" className="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                  </ul>
+                </div>
+              </div>
+              : null}
+            <h2 id="accordion-collapse-heading-3">
+              <button onClick={handleFAQ3} type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+                <span>What are the differences between Flowbite and Tailwind UI?</span>
+                <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                </svg>
+              </button>
+            </h2>
+            {FAQ3 ?
+              <div id="accordion-collapse-body-3" className="" aria-labelledby="accordion-collapse-heading-3">
+                <div className="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                  <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                    <li><a href="https://flowbite.com/pro/" className="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                    <li><a href="https://tailwindui.com/" rel="nofollow" className="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                  </ul>
+                </div>
+              </div>
+              : null}
+
+          </div>
+
+
+
 
           <form action="#" className="space-y-8">
             <div>

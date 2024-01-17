@@ -3,6 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     screens: {
@@ -18,9 +19,12 @@ export default {
         'logo': 'url("../src/assets/logo.jpg")',
         'waves': 'url("../src/assets/waves.svg")',
         'wallpaper': 'url("../src/assets/karlshagen.jpg")',
+        'house': 'url("../src/assets/Haus_front.jpg")',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 

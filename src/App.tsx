@@ -127,11 +127,11 @@ function App() {
       <Navigation></Navigation>
 
       <section id="home" className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
           <div className="w-full h-screen bg-wallpaper bg-no-repeat bg-cover">
             <div className="md:hidden w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
           </div>
-          <div className="relative hidden md:flex flex-col justify-center mx-auto p-4 h-full xl:col-span-2">
+          <div className="relative hidden md:flex flex-col justify-center mx-auto p-4 h-full xl:col-span-2 md:pt-[50px]">
             <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-7xl">
               Die Usedomperle
             </h1>
@@ -197,7 +197,7 @@ function App() {
 
       <section id="about" className="">
 
-        <h2 className="py-8 text-3xl md:text-4xl font-extrabold text-neutral-800 text-center">Unsere Ausstattung</h2>
+        <h2 className="py-8 text-3xl md:text-5xl font-extrabold text-neutral-800 text-center">Unsere Ausstattung</h2>
         <div className="max-w-[1440px] min-h-screen grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className=" shadow-gray-400 max-w-xl flex flex-col items-center mx-auto">
             <ul className="text-left m-4 -space-y-6 bg-gray-100 rounded-xl shadow-lg">
@@ -321,7 +321,7 @@ function App() {
       {/*Start of Review section*/}
       <section className="mt-16 pt-8" id="reviews">
         <div className="mx-auto text-center max-w-4xl">
-          <h3 className="mb-6 text-3xl md:text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
+          <h3 className="mb-6 text-3xl md:text-5xl font-extrabold text-neutral-800 dark:text-neutral-200">
             Rezensionen
           </h3>
           <p className="mb-8 lg:mb-16 font-light text-center px-4 text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
@@ -531,7 +531,7 @@ function App() {
       <section className="py-20 min-h-screen" id="contact">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-4xl ">
           <div className="min-w-4xl" >
-            <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+            <h2 className="mb-4 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
               Kontaktieren Sie uns
             </h2>
             <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">

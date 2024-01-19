@@ -10,7 +10,7 @@ function Gallery() {
     <>
       <div id="fotos" className="max-w-[1140px] w-full m-auto p-4 py-6">
         <div className="flex flex-col items-center">
-          <h2 className="pt-2 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-black dark:text-black">
+          <h2 className="pt-2 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-black dark:text-black">
             Fotos
           </h2>
           <p className="py-6 lg:mb-16 font-light text-center px-4 text-gray-500 dark:text-gray-400 sm:text-xl">

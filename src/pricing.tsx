@@ -9,7 +9,7 @@ function Pricing() {
             <section id="pricing" className=" rounded-xl bg-gray-900 shadow-lg w-full shadow-gray-400 text-center">
                 <div className="max-w-7xl mx-auto">
                     <div className="px-4">
-                        <h2 className="py-6 text-3xl md:text-4xl tracking-tight font-extrabold text-center text-gray-100 dark:text-white">
+                        <h2 className="py-6 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-100 dark:text-white">
                             Mietpreise und Buchungskalender
                         </h2>
                         <p className=" font-light text-center text-gray-300 dark:text-gray-400 sm:text-xl pt-4 pb-10">

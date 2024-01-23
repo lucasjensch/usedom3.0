@@ -170,7 +170,7 @@ function App() {
                 Buchen Sie jetzt &rarr;
               </a>
             </div>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-200">
               <a href="#about" className="animate-bounce grid-cols-1 grid">
                 <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
                 <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
@@ -223,7 +223,7 @@ function App() {
           die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als
           Personen, weitere Aufbettungen gegen Aufpreis möglich)
         </p>
-        <div className="max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto py-4 lg:py-14">
+        <div className="max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
           <div className="px-8 mx-auto">
             <a href="#fotos">
               <img

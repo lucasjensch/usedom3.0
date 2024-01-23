@@ -27,10 +27,10 @@ function Navigation() {
           <a href="#about">Ausstattung</a>
         </li>
         <li className="text-base">
-          <a href="#pricing">Preise und Buchung</a>
+          <a href="#pricing">Preise und Belegung</a>
         </li>
         <li className="text-base">
-          <a href="#reviews">Rezensionen</a>
+          <a href="#fotos">Fotos</a>
         </li>
         <li className="text-base">
           <a href="#contact">Kontakt</a>
@@ -69,7 +69,7 @@ function Navigation() {
         onClick={handleNav}
         className={
           nav
-            ? "fixed overlay-y-hidden lg:hidden duration-300 text-gray-800 left-0 top-0 h-screen w-full bg-white py-7 flex flex-col"
+            ? "fixed z-50 overlay-y-hidden lg:hidden duration-300 text-gray-800 left-0 top-0 h-screen w-full bg-white py-7 flex flex-col"
             : "absolute top-0 h-screen left-[-100%] ease-out duration-500"
         }
       >
@@ -90,10 +90,10 @@ function Navigation() {
             <a href="#about">Ausstattung</a>
           </li>
           <li className="text-2xl py-4 ">
-            <a href="#pricing">Preise und Buchung</a>
+            <a href="#pricing">Preise und Belegung</a>
           </li>
           <li className="text-2xl py-4 ">
-            <a href="#reviews">Rezensionen</a>
+            <a href="#fotos">Fotos</a>
           </li>
           <li className="text-2xl py-4 ">
             <a href="#contact">Kontakt</a>

@@ -9,7 +9,7 @@ function Pricing() {
         id="pricing"
         className="py-8 rounded-b-xl bg-gray-900 shadow-lg w-full shadow-gray-400 text-center"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1250px] mx-auto">
           <div className="px-4">
             <h2 className="py-6 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-100 dark:text-white">
               Mietpreise und Buchungskalender
@@ -21,7 +21,7 @@ function Pricing() {
           </div>
 
           <div className="grid grid-cols-1 py-6 md:grid-cols-2 gap-6">
-            <div className="max-w-7xl flex mx-auto py-8 px-2 md:h-96 md:mb-8">
+            <div className=" flex mx-auto py-8 md:h-96 md:mb-8">
               <div className="max-w-sm flex items-center md:h-full bg-white border  border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 ">
                 <div className="p-5">
                   <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -56,7 +56,7 @@ function Pricing() {
             </div>
             {priceTable2024 ? (
               <div className="h-screen flex justify-center items-center bg-black/50 z-50 fixed top-0 left-0 w-screen">
-                <div className="flex flex-col p-8 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+                <div className="flex flex-col p-8 bg-gray-100 h-5/6 w-11/12 rounded-xl relative">
                   <button
                     onClick={() => setPriceTable2024(false)}
                     className="absolute top-0 right-0 m-4"
@@ -159,7 +159,7 @@ function Pricing() {
             </div>
             {priceTable2025 ? (
               <div className="h-screen flex justify-center items-center bg-black/50 z-50 fixed top-0 left-0 w-screen">
-                <div className="flex flex-col p-12 bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+                <div className="flex flex-col p-8 bg-gray-100 h-5/6 w-11/12 rounded-xl relative">
                   <button
                     onClick={() => setPriceTable2025(false)}
                     className="absolute top-0 right-0 m-4"

@@ -90,6 +90,29 @@ function App() {
   const handleFAQ3 = () => {
     setFAQ3(!FAQ3);
   };
+  const imageUrls=[
+    "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
+    "../src/assets/neue Bilder Usedomperle/Schuppen.png",
+    "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
+    "../src/assets/neue Bilder Usedomperle/Usedomperle-outdoor.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Bad.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Bad_2.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Tisch.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Couch.png",
+    "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Bett1.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Bad.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Bad2.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Sauna.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Flur.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Schlaf.png",
+    "../src/assets/neue Bilder Usedomperle/1OG_Schlaf2.png",
+    "../src/assets/neue Bilder Usedomperle/Schlafzimmer3.png",
+    "../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png",
+    "../src/assets/neue Bilder Usedomperle/2OG_Schuppen.png",  
+  ]
 
 
 
@@ -200,7 +223,7 @@ function App() {
           die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als
           Personen, weitere Aufbettungen gegen Aufpreis möglich)
         </p>
-        <div className="max-w-[1440px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto py-4 lg:py-14">
+        <div className="max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto py-4 lg:py-14">
           <div className="px-8 mx-auto">
             <a href="#fotos">
               <img
@@ -303,7 +326,7 @@ function App() {
       </section>
 
       <Pricing></Pricing>
-      <Gallery></Gallery>
+      <Gallery images={imageUrls}></Gallery>
 
       {/* Start of Review section*/}
       {/* <section className="mt-16 pt-8" id="reviews">
@@ -741,7 +764,7 @@ function App() {
       </section>
 
       {/* Start of contact-section */}
-      <section className="py-20 min-h-screen" id="contact">
+      <section className="py-12 min-h-screen" id="contact">
         <div className="px-4 mx-auto max-w-4xl ">
           <div className="min-w-4xl">
             <h2 className="mb-4 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">

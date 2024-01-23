@@ -1,10 +1,19 @@
+import { url } from "inspector";
 import React, { useState } from "react";
 
 interface GalleryProps {
-  images: string[];
+  images: string[]
 }
 
-const Gallery_: React.FC<GalleryProps> = ({ images }) => {
+
+
+function Gallery({ images }: GalleryProps) {
+  const [popupGallery, setPopupGallery] = useState(false);
+  const handleGallery = () => {
+    setPopupGallery(!popupGallery);
+  };
+
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
@@ -17,20 +26,6 @@ const Gallery_: React.FC<GalleryProps> = ({ images }) => {
     );
   };
 
-  return (
-    <div className="gallery-container">
-      <button onClick={prevImage}>Previous</button>
-      <img src={images[currentIndex]} />
-      <button onClick={nextImage}>Next</button>
-    </div>
-  );
-};
-
-function Gallery() {
-  const [popupGallery, setPopupGallery] = useState(false);
-  const handleGallery = () => {
-    setPopupGallery(!popupGallery);
-  };
   return (
     <>
       <div id="fotos" className="max-w-[1140px] w-full m-auto p-4 py-6">
@@ -108,6 +103,7 @@ function Gallery() {
                 type="button"
                 className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                 data-carousel-prev
+                onClick={prevImage}
               >
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                   <svg
@@ -132,6 +128,7 @@ function Gallery() {
                 type="button"
                 className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                 data-carousel-next
+                onClick={nextImage}
               >
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                   <svg
@@ -152,6 +149,9 @@ function Gallery() {
                   <span className="sr-only">Next</span>
                 </span>
               </button>
+              <div className="h-full flex justify-center w-full">
+                <img src={images[currentIndex]} alt="" />
+              </div>
             </div>
           </div>
         </div>

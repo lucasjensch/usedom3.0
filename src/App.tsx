@@ -96,6 +96,8 @@ function App() {
     message: string;
   }
 
+
+  
   const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -129,6 +131,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  
+    const toggleModal = () => {
+      setIsModalOpen(!isModalOpen);
+    }
   mybutton?.addEventListener("click", backToTop);
 
   window.addEventListener("scroll", scrollFunction);
@@ -196,32 +203,47 @@ function App() {
       </section>
 
       <section >
-        <div className="max-w-[1100px] mx-auto py-20">
+        <div className="max-w-[1100px] mx-auto pt-20" >
           <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
             <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="" />
             <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="" />
             <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="" />
             <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="" />
             <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 pt-10 min-h-screen">
+          <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen" id="about">
             <div className="col-span-2 flex flex-col items-start">
               <h2 className="text-3xl">Exklusive Ausstattung für Ihren Traumurlaub.</h2>
               <p className="text-xl">Platz für 6 Gäste, 3 Schlafzimmer, 3 Bäder</p>
 
               <div className="pb-8 pt-8 w-[90%]">
-                <div className="my-5 border-t border-black/20 pt-5">
-                  <p className="text-xl">Unschlagbare Lage direkt am Strand</p>
-                  <p>Sie können das Meer innerhalb von wenigen Minuten zu Fuß erreichen.</p>
-                </div>
+              <div className="my-5 border-t border-black/20 pt-5">
+                  <div className="flex items-center mb-3">
+                    <span className="relative flex-shrink-0">
+                      <img className="w-6 h-6 mr-6" src="../src/assets/sonne_icon.webp" alt="Icon" />
+                    </span>
+                    <p className="text-xl">Unschlagbare Lage direkt am Strand</p>
+                  </div>
+                  <p className="ml-12">Sie können das Meer innerhalb von wenigen Minuten zu Fuß erreichen.</p>
+                
                 <div className="my-5">
-                  <p className="text-xl">Exklusvie Ausstattung für einen Traumurlaub</p>
-                  <p>Genießen Sie Komfort und Gemütlichkeit in der Usedomperle.</p>
+                <div className="flex items-center mb-3">
+                    <span className="relative flex-shrink-0">
+                      <img className="w-6 h-6 mr-6" src="../src/assets/couch-icon.png" alt="Icon" />
+                    </span>
+                    <p className="text-xl">Exklusive Ausstattung für einen Traumurlaub</p>
+                  </div>
+                  <p className="ml-12">Genießen Sie Komfort und Gemütlichkeit in der Usedomperle.</p>
                 </div>
                 <div className="my-5 border-b border-black/20 pb-5">
-                  <p className="text-xl">Inklusive technischer Ausstattung</p>
-                  <p>Kostenloses WLAN, Smart-TV, BlueRay-Player, etc.</p>
+                <div className="flex items-center mb-3">
+                    <span className="relative flex-shrink-0">
+                      <img className="w-6 h-6 mr-6" src="../src/assets/wifi-logo.svg" alt="Icon" />
+                    </span>
+                    <p className="text-xl">Inklusive technischer Ausstattung</p>
+                  </div>
+                  <p className="ml-12">Kostenloses WLAN, Smart-TV, BlueRay-Player, etc.</p>
                 </div>
               </div>
               <div className="w-[90%] border-b border-black/20 pb-5">
@@ -230,9 +252,42 @@ function App() {
                   Im ersten Obergeschoss befinden sich zwei Schlafzimmer mit Betten in der Größe von 1,80 m x 2 m. Im zweiten Obergeschoss gibt es ein weiteres Schlafzimmer mit einem Bett derselben Größe.
                   Das Ferienhaus verfügt über zwei Bäder:
                 </p>
-                <button className="underline mt-4">Mehr lesen...</button>
+                <button onClick={toggleModal} className="underline mt-4">Mehr lesen...</button>
               </div>
+              {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+          <div className="bg-white w-[90%] md:w-[600px] max-h-[80vh] rounded-lg shadow-lg p-6 relative">
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-black"
+              onClick={toggleModal}
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-semibold mb-4">Weitere Informationen</h3>
+            <div className="overflow-y-auto max-h-[60vh] pr-4">
+              <p className="mb-4">
+              Unser Ferienhaus ist ideal für eine Belegung von bis zu 6 Personen ausgelegt. Bitte beachten Sie, dass Kleinkinder ebenfalls als Personen zählen. Für zusätzliche Aufbettungen fällt ein Aufpreis an. Haustiere sind leider nicht erlaubt.
 
+Mit einer großzügigen Wohn- und Nutzfläche von ca. 100 m² bietet das Haus eine komfortable Umgebung für Ihren Aufenthalt. Die gesamte Fläche ist mit Fußbodenheizung ausgestattet, was für eine angenehme Wärme sorgt.
+
+Im ersten Obergeschoss befinden sich zwei Schlafzimmer mit jeweils einem Bett in den Maßen von 1,80 m x 2 m. Ein weiteres Schlafzimmer im zweiten Obergeschoss ist ebenfalls mit einem Bett in dieser Größe ausgestattet.
+
+Zur Ausstattung gehören zwei Badezimmer: eines im Erdgeschoss mit Dusche und ein weiteres im ersten Obergeschoss, das über eine Dusche, eine Infrarot-Sauna und einen Haartrockner verfügt.
+
+Die Küche ist voll ausgestattet und bietet alles, was Sie für die Zubereitung Ihrer Mahlzeiten benötigen. Dazu gehören eine Kaffeemaschine, ein Wasserkocher, ein Toaster, ein Backofen, ein 4-Platten-Herd, ein Geschirrspüler, ein Kühlschrank mit Gefrierfach und eine Mikrowelle.
+
+Zusätzlich finden Sie im Haus eine Waschmaschine sowie einen gemütlichen Kamin, der für eine entspannte Atmosphäre sorgt. Für Ihre Unterhaltung stehen ein LED-Smart-TV, ein Blu-ray-Player und ein Radio zur Verfügung.
+
+Für Fahrradliebhaber gibt es einen Fahrradschuppen, der mit 4 Fahrrädern (28") und einem Kinderfahrrad (24") ausgestattet ist. Bitte beachten Sie, dass die Benutzung auf eigene Gefahr erfolgt.
+
+Ein Grillplatz und eine Terrasse mit Gartenmöbeln sowie einem Strandkorb laden dazu ein, die frische Luft und die Umgebung zu genießen.
+
+Für Ihr Auto gibt es einen Parkplatz direkt am Haus, weitere Parkmöglichkeiten befinden sich in unmittelbarer Nähe. Außerdem bieten wir eine Lademöglichkeit für Elektroautos mit einer Wallbox (11 kW).
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
               <div className="">
                 <h2 className="text-3xl pt-8">Diese Ausstattung können wir bieten</h2>
                 <div className="grid grid-cols-4 grid-rows-3">
@@ -240,10 +295,10 @@ function App() {
                 </div>
               </div>
 
-
+              </div>
             </div>
             <div className="w-full h-[400px] flex flex-col sticky top-[100px] border border-black/20 rounded-xl p-4 shadow-gray-300 shadow-lg">
-              <p className="font-bold text-black text-3xl">ab 85€/Nacht</p>
+              <p className="font-bold text-black text-3xl">ab 90€/Nacht</p>
               <p className="text-gray-500 pb-5">inkl. MWSt.</p>
               <a href="#contact" className="bg-blue-500 p-4 flex justify-center text-white rounded-xl text-xl">Reservieren</a>
             </div>
@@ -251,7 +306,7 @@ function App() {
         </div>
       </section>
       <section className="py-20 ">
-        <div className="max-w-[1100px] mx-auto px-4">
+        <div className="max-w-[1100px] mx-auto px-4" id="rezensionen">
           <h2 className="text-3xl font-bold mb-8 text-center">Was unsere Gäste sagen</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {reviews.map((review, index) => (
@@ -277,58 +332,99 @@ function App() {
 
 
       <section className="py-20" id="contact">
-        <div className="max-w-[1100px] mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Kontaktieren Sie uns</h2>
-          {submitted && <p className="mb-4 text-green-600 text-center">Vielen Dank für Ihre Nachricht!</p>}
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-Mail</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Nachricht</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">
-              Absenden
-            </button>
-          </form>
-          <div className="mt-10 text-center">
-            <h3 className="text-xl font-bold">Kontaktinformationen</h3>
-            <p className="text-gray-600">Telefon: +49 123 456 7890</p>
-            <p className="text-gray-600">E-Mail: info@example.com</p>
-            <p className="text-gray-600">Adresse: Musterstraße 1, 12345 Musterstadt</p>
+  <div className="max-w-[1100px] mx-auto px-4">
+    <h2 className="text-4xl font-bold mb-12 text-center">Kontaktieren Sie uns</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Contact Information */}
+      <div className="bg-white p-8 rounded-lg shadow-md flex flex-col justify-top">
+      <img className="max-h-[220px] w-auto" src="../src/assets/karlshagen_overhead.jpg" alt="" />
+
+        <h3 className="text-2xl font-semibold mb-4 mt-6">Kontaktinformationen</h3>
+        <p className="text-gray-700 mb-2">
+          <strong>Telefon:</strong> +49 1520 8870816
+        </p>
+        <p className="text-gray-700 mb-2">
+          <strong>E-Mail:</strong> info@die-usedomperle.de
+        </p>
+        <p className="text-gray-700 mb-2">
+          <strong>Adresse:</strong> Kiefernweg 9, 17449 Peenemünde (Dünenresidenz Karlshagen)
+        </p>
+
+      </div>
+
+      {/* Contact Form */}
+      <div>
+        {submitted && (
+          <p className="mb-4 text-blue-500 text-center">
+            Vielen Dank für Ihre Nachricht!
+          </p>
+        )}
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-lg shadow-md"
+        >
+          <div className="mb-6">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
+            />
           </div>
-        </div>
-      </section>
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              E-Mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Nachricht
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={4}
+              className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition"
+          >
+            Absenden
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 
       <footer className="bg-gray-800 shadow text-center">

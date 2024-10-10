@@ -56,6 +56,61 @@ function App() {
   interface ButtonElement extends HTMLElement {
     classList: DOMTokenList;
   }
+  interface Review {
+    name: string;
+    date: string;
+    content: string;
+    rating: number; // Bewertung von 1 bis 5
+  }
+
+  const reviews: Review[] = [
+    {
+      name: "Anna Müller",
+      date: "15. August 2023",
+      content: "Ein wunderschönes Ferienhaus! Die Ausstattung ist top und die Lage direkt am Strand ist perfekt. Wir kommen gerne wieder!",
+      rating: 5,
+    },
+    {
+      name: "Max Schmidt",
+      date: "22. September 2023",
+      content: "Sehr gemütlich und gut ausgestattet. Die Sauna im Badezimmer war ein tolles Highlight nach einem Tag am Strand.",
+      rating: 4,
+    },
+    {
+      name: "Julia Meier",
+      date: "10. Oktober 2023",
+      content: "Wir hatten einen tollen Aufenthalt. Die Fahrräder waren ein super Zusatz, um die Umgebung zu erkunden.",
+      rating: 5,
+    },
+    {
+      name: "Johann Kreider",
+      date: "12. März 2019",
+      content: "Toll! Einfach eine super schöne Lage und eine moderne Ausstattung. Wir kommen wieder.",
+      rating: 4,
+    },
+  ];
+
+  interface ContactFormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+
+  const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Hier könnte eine API-Anfrage erfolgen
+    console.log('Form submitted:', formData);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', message: '' }); // Zurücksetzen des Formulars
+  };
 
   const mybutton: ButtonElement | null =
     document.getElementById("btn-back-to-top");
@@ -79,18 +134,8 @@ function App() {
   window.addEventListener("scroll", scrollFunction);
 
   const [FAQ1, setFAQ1] = useState(false);
-  const handleFAQ1 = () => {
-    setFAQ1(!FAQ1);
-  };
-  const [FAQ2, setFAQ2] = useState(false);
-  const handleFAQ2 = () => {
-    setFAQ2(!FAQ2);
-  };
-  const [FAQ3, setFAQ3] = useState(false);
-  const handleFAQ3 = () => {
-    setFAQ3(!FAQ3);
-  };
-  const imageUrls=[
+
+  const imageUrls = [
     "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
     "../src/assets/neue Bilder Usedomperle/Schuppen.png",
     "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
@@ -111,7 +156,7 @@ function App() {
     "../src/assets/neue Bilder Usedomperle/1OG_Schlaf2.png",
     "../src/assets/neue Bilder Usedomperle/Schlafzimmer3.png",
     "../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png",
-    "../src/assets/neue Bilder Usedomperle/2OG_Schuppen.png",  
+    "../src/assets/neue Bilder Usedomperle/2OG_Schuppen.png",
   ]
 
 
@@ -143,687 +188,148 @@ function App() {
 
       <Navigation></Navigation>
 
-      <section id="home" className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-          <div className="w-full h-screen bg-wallpaper bg-no-repeat bg-cover">
-            <div className="md:hidden w-full h-full bg-gradient-to-b from-black/0 to-black/70"></div>
-          </div>
-          <div className="relative hidden md:flex flex-col justify-center mx-auto p-6  h-full lg:col-span-2 md:pt-[50px]">
-            <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-7xl">
-              Die Usedomperle
-            </h1>
-            <h2 className="italic py-4 xxs:py-6">
-              Ihr exklusives Ferienhaus direkt am Strand
-            </h2>
-            <p className="max-w-[800px]">
-              Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel Usedom,
-              beeindruckt durch ihre erstklassige Ausstattung und charmante
-              Atmosphäre. Mit stilvoller Einrichtung, moderner Technologie und
-              einem idyllischen Ambiente bietet sie unvergessliche
-              Urlaubsmomente.
-            </p>
-            <div className="py-12">
-              <a
-                href="#contact"
-                className="bg-gradient-to-r from-blue-700 to-blue-500 w-max rounded-2xl px-6 py-4 text-white decoration-none hover:to-blue-300 hover:text-white hover:duration-500"
-              >
-                Buchen Sie jetzt &rarr;
-              </a>
-            </div>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-200">
-              <a href="#about" className="animate-bounce grid-cols-1 grid">
-                <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
-                <div className="w-6 h-6 border-b-2 border-r-2 border-black transform rotate-45 inline-block"></div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-[1140px] m-auto">
-          <div className="md:hidden absolute top-[20%] sm:top-[30%] w-full md:-[50%] max-w-[600px] md:max-w-[800px] flex flex-col text-white p-4">
-            <h1 className="font-extrabold text-5xl xs:text-6xl lg:text-8xl">
-              Die Usedomperle
-            </h1>
-            <h2 className="italic py-4 xxs:py-6">
-              Ihr exklusives Ferienhaus direkt am Strand
-            </h2>
-            <p>
-              Die Usedomperle, ein bezauberndes Ferienhaus auf der Insel Usedom,
-              beeindruckt durch ihre erstklassige Ausstattung und charmante
-              Atmosphäre.{" "}
-              <p className="hidden xs:block">
-                {" "}
-                Mit stilvoller Einrichtung, moderner Technologie und einem
-                idyllischen Ambiente bietet sie unvergessliche Urlaubsmomente.
-              </p>
-            </p>
-            <a
-              href="#contact"
-              className="bg-white w-max rounded-xl px-4 py-2 text-black hover:bg-gray-100 duration-150 decoration-none mt-6"
-            >
-              Buchen Sie jetzt &rarr;
-            </a>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8 z-40 md:hidden">
-          <a href="#about" className="animate-bounce grid-cols-1 grid">
-            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
-            <div className="w-6 h-6 border-b-2 border-r-2 border-gray-100 transform rotate-45 inline-block"></div>
-          </a>
-        </div>
-      </section>
-
-      <section id="about" className="min-h-screen">
-        <h2 className="py-8 text-3xl md:text-5xl font-extrabold text-neutral-800 text-center">
-          Unsere Ausstattung
-        </h2>
-        <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl px-4">
-          Von Mai bis Sep. inkl. Strandkorb am Strand. Das Ferienhaus ist für
-          die Belegung von max. 6 Personen ausgelegt! (Kleinkinder zählen als
-          Personen, weitere Aufbettungen gegen Aufpreis möglich)
-        </p>
-        <div className="max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
-          <div className="px-8 mx-auto">
-            <a href="#fotos">
-              <img
-                className="rounded-xl max-h-[600px] mt-5"
-                src="../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png"
-                alt=""
-              />
-            </a>
-          </div>
-          <div className="max-w-[450px] mx-auto">
-            <ul>
-              <li>
-                <div className="md:max-w-[400px]">
-                  <h3 className="font-bold text-lg">Allgemeine Ausstattung</h3>
-                  <p>
-                    <ul className="">
-                      <p>ca. 100m² Wohn-/Nutzfläche</p>
-                      <p>Fußbodenheizung im gesamten Haus</p>
-                      <p>Internet (WLAN)</p>
-                      <p>Terrasse mit Gartenmöbeln und Strandkorb</p>
-                      <p>
-                        Parkplatz direkt am Haus und weitere in unmittelbarer
-                        Nähe
-                      </p>
-                    </ul>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="md:max-w-[400px]">
-                  <h3 className="font-bold text-lg">Erdgeschoss</h3>
-                  <p>
-                    <ul className="">
-                      <p>1 Bad mit Dusche</p>
-                      <p>Waschmaschine, Staubsauger, etc.</p>
-                      <p>
-                        Küche mit Kaffeemaschine, Wasserkocher, Toaster,
-                        Backofen und 4 Platten-Herd, Geschirrspüler, Kühlschrank
-                        mit Gefrierfach, Mikrowelle...
-                      </p>
-                      <p>Kamin</p>
-                      <p>LED-Smart-TV, Blu-ray Player, Radio</p>
-                    </ul>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="md:max-w-[400px]">
-                  <h3 className="font-bold text-lg">1. Obergeschoss</h3>
-                  <p>
-                    <ul className="">
-                      <p>2 Schlafzimmer mit 1,80m x 2m Betten</p>
-                      <p>1 Bad mit Dusche, Infrarot-Saune und Haartrockner</p>
-                      <p>Internet (WLAN)</p>
-                      <p>Fernseher in den Schlafzimmern</p>
-                    </ul>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="md:max-w-[400px]">
-                  <h3 className="font-bold text-lg">2. Obergeschoss</h3>
-                  <p>
-                    <ul className="">
-                      <p>1 Schlafzimmer mit 1,60m x 2m Bett</p>
-                      <p>Fernseher und Sessel</p>
-                      <p>Kleiner "Balkon"</p>
-                    </ul>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="flex py-4">
-                  <a
-                    href="#fotos"
-                    className="shadow-md shadow-gray-400 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Zu den Fotos
-                    <svg
-                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <Pricing></Pricing>
-      <Gallery images={imageUrls}></Gallery>
-
-      {/* Start of Review section*/}
-      {/* <section className="mt-16 pt-8" id="reviews">
-        <div className="mx-auto text-center max-w-4xl">
-          <h3 className="mb-6 text-3xl md:text-5xl font-extrabold text-neutral-800 dark:text-neutral-200">
-            Rezensionen
-          </h3>
-          <p className="mb-8 lg:mb-16 font-light text-center px-4 text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
-            Uns ist wichtig, was unsere Besucher von uns denken. Daher haben wir
-            einige Rezensionen für Sie zusammengestellt, die die Erfahrung in
-            der Usedomperle optimal widerspiegeln. Zögern Sie also nicht und
-            teilen Sie gerne auch Ihre eigenen Eindrücke in einer Rezension mit.
-          </p>
-        </div>
-        <div
-          className="grid grid-cols-1 gap-6 text-center mx-auto max-w-3xl md:grid-cols-2 py-8"
-          data-aos="fade-left"
-        >
-          <div className="bg-gray-100 p-6 rounded-xl shadow-lg shadow-black/30 mb-12 md:mb-0 w-72 justify-center items-center mx-auto">
-            <div className="mb-6 flex justify-center">
-              <img
-                src="../src/assets/elderly-man-icon.png"
-                className="w-32 rounded-full shadow-lg shadow-gray-500 dark:shadow-black/30"
-              />
-            </div>
-            <h5 className="mb-4 text-xl font-semibold">Joachim Breuhahn</h5>
-            <p className="mb-4 font-light text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                className="inline-block h-7 w-7 pr-2 text-black"
-                viewBox="0 0 24 24"
-              >
-                <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
-              </svg>
-              War dort ein schöner Sommerurlaub, herrlicher Strand und für Groß
-              und Klein viele schöne Veranstaltungen und prima Minigolf-Anlage.
-              Alles sehr empfehlenswert.
-            </p>
-            <ul className="mb-0 flex items-center justify-center">
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gray-100 p-6 rounded-xl shadow-lg shadow-black/30 mb-12 md:mb-0 mx-auto w-72">
-            <div className="mb-6 flex justify-center">
-              <img
-                src="https://www.shareicon.net/data/2017/01/06/868320_people_512x512.png"
-                className="w-32 rounded-full shadow-lg shadow-gray-500 dark:shadow-black/30"
-              />
-            </div>
-            <h5 className="mb-4 text-xl font-semibold">Gunnar Lindemann</h5>
-            <p className="mb-4 font-light text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                className="inline-block h-7 w-7 pr-2 text-black"
-                viewBox="0 0 24 24"
-              >
-                <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
-              </svg>
-              Ein super schönes Ferienhaus, gut ausgestattet, gepflegt, eine
-              tolle Lage und ein kurzer Weg zum Strand!
-            </p>
-            <ul className="mb-0 flex items-center justify-center">
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-              <li className="p-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-yellow-500"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section> */}
-      {/*End of Review section */}
-
       <section>
-        <div
-          id="FAQ"
-          data-accordion="collapse"
-          className="py-20 max-w-[800px] flex flex-col mx-auto"
-        >
-          <div className="px-4">
-            <h2 className="mb-4 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-              FAQ
-            </h2>
-            <p className="mb-6 lg:mb-12 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
-              Wir haben für Sie die am häufigst-gestellten Fragen
-              zusammengestellt.
-            </p>
-          </div>
-          <h2 id="accordion-collapse-heading-1">
-            <button
-              onClick={handleFAQ1}
-              type="button"
-              className="flex items-center justify-between max-w-[1440px] w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-              data-accordion-target="#accordion-collapse-body-1"
-              aria-expanded="true"
-              aria-controls="accordion-collapse-body-1"
-            >
-              <span>Sind Haustiere erlaubt?</span>
-              <svg
-                data-accordion-icon
-                className="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          {FAQ1 ? (
-            <div
-              id="accordion-collapse-body-3"
-              className=""
-              aria-labelledby="accordion-collapse-heading-3"
-            >
-              <div className="p-5 border border-t-0 border-gray-200  dark:border-gray-700">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  Haustiere sind nicht gestattet.
-                </p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  Um auch zukünftig eine sichere Umgebung für Allergiker zu
-                  schaffen, müssen Sie Ihr geliebtes Haustier leider zuhause
-                  lassen.
-                </p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  Für Nachfragen stehen wir Ihnen natürlich zur Verfügung:
-                </p>
-                <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
-                  <li>
-                    <a
-                      href="#contact"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Kontaktformular
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="mailto:info@die-usedomperle.de"
-                      rel="nofollow"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Direkt-Mail
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : null}
-          <h2 id="accordion-collapse-heading-2">
-            <button
-              onClick={handleFAQ2}
-              type="button"
-              className="flex items-center justify-between max-w-[1440px] w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-              data-accordion-target="#accordion-collapse-body-2"
-              aria-expanded="false"
-              aria-controls="accordion-collapse-body-2"
-            >
-              <span className="">Ist eine Stornierung möglich?</span>
-              <svg
-                data-accordion-icon
-                className="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          {FAQ2 ? (
-            <div
-              id="accordion-collapse-body-3"
-              className=""
-              aria-labelledby="accordion-collapse-heading-3"
-            >
-              <div className="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">2</p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  However, we actually recommend using both Flowbite, Flowbite
-                  Pro, and even Tailwind UI as there is no technical reason
-                  stopping you from using the best of two worlds.
-                </p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  Learn more about these technologies:
-                </p>
-                <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
-                  <li>
-                    <a
-                      href="https://flowbite.com/pro/"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Flowbite Pro
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://tailwindui.com/"
-                      rel="nofollow"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Tailwind UI
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : null}
-          <h2 id="accordion-collapse-heading-3">
-            <button
-              onClick={handleFAQ3}
-              type="button"
-              className="flex items-center justify-between max-w-[1440px] w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-              data-accordion-target="#accordion-collapse-body-3"
-              aria-expanded="false"
-              aria-controls="accordion-collapse-body-3"
-            >
-              <span>
-                What are the differences between Flowbite and Tailwind UI?
-              </span>
-              <svg
-                data-accordion-icon
-                className="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          {FAQ3 ? (
-            <div
-              id="accordion-collapse-body-3"
-              className=""
-              aria-labelledby="accordion-collapse-heading-3"
-            >
-              <div className="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  The main difference is that the core components from Flowbite
-                  are open source under the MIT license, whereas Tailwind UI is
-                  a paid product. Another difference is that Flowbite relies on
-                  smaller and standalone components, whereas Tailwind UI offers
-                  sections of pages.
-                </p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  However, we actually recommend using both Flowbite, Flowbite
-                  Pro, and even Tailwind UI as there is no technical reason
-                  stopping you from using the best of two worlds.
-                </p>
-                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                  Learn more about these technologies:
-                </p>
-                <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
-                  <li>
-                    <a
-                      href="https://flowbite.com/pro/"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Flowbite Pro
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://tailwindui.com/"
-                      rel="nofollow"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Tailwind UI
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : null}
+        <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center">
+          <h1 className="text-9xl text-white font-extrabold">Die Usedomperle</h1>
+          <p className="text-white text-2xl pt-5">Ihr exklusives Ferienhaus direkt am Strand.</p>
         </div>
       </section>
 
-      {/* Start of contact-section */}
-      <section className="py-12 min-h-screen" id="contact">
-        <div className="px-4 mx-auto max-w-4xl ">
-          <div className="min-w-4xl">
-            <h2 className="mb-4 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-              Kontaktieren Sie uns
-            </h2>
-            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl pt-4 pb-10">
-              Haben Sie Probleme mit der Buchung? Oder wollen Sie uns einfach
-              nur Feedback geben? Wir stehen für Sie bereit.
-            </p>
+      <section >
+        <div className="max-w-[1100px] mx-auto py-20">
+          <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 pb-10">
+            <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="" />
+            <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="" />
+            <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="" />
+            <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="" />
+            <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="" />
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 pt-10 min-h-screen">
+            <div className="col-span-2 flex flex-col items-start">
+              <h2 className="text-3xl">Exklusive Ausstattung für Ihren Traumurlaub.</h2>
+              <p className="text-xl">Platz für 6 Gäste, 3 Schlafzimmer, 3 Bäder</p>
 
-          <form action="#" className="space-y-8">
-            <div>
-              <label className="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300">
-                Ihre Email
-              </label>
+              <div className="pb-8 pt-8 w-[90%]">
+                <div className="my-5 border-t border-black/20 pt-5">
+                  <p className="text-xl">Unschlagbare Lage direkt am Strand</p>
+                  <p>Sie können das Meer innerhalb von wenigen Minuten zu Fuß erreichen.</p>
+                </div>
+                <div className="my-5">
+                  <p className="text-xl">Exklusvie Ausstattung für einen Traumurlaub</p>
+                  <p>Genießen Sie Komfort und Gemütlichkeit in der Usedomperle.</p>
+                </div>
+                <div className="my-5 border-b border-black/20 pb-5">
+                  <p className="text-xl">Inklusive technischer Ausstattung</p>
+                  <p>Kostenloses WLAN, Smart-TV, BlueRay-Player, etc.</p>
+                </div>
+              </div>
+              <div className="w-[90%] border-b border-black/20 pb-5">
+                <p>Von Mai bis September steht Ihnen ein Strandkorb am Strand zur Verfügung, um entspannte Tage in der Sonne zu genießen. Das Ferienhaus ist für die Belegung von maximal 6 Personen ausgelegt, wobei Kleinkinder als Personen zählen. Es sind weitere Aufbettungen gegen Aufpreis möglich.
+                  Haustiere sind in diesem Haus nicht gestattet. Die Wohn- und Nutzfläche beträgt ca. 100 m² und bietet Ihnen eine komfortable Fußbodenheizung im gesamten Haus.
+                  Im ersten Obergeschoss befinden sich zwei Schlafzimmer mit Betten in der Größe von 1,80 m x 2 m. Im zweiten Obergeschoss gibt es ein weiteres Schlafzimmer mit einem Bett derselben Größe.
+                  Das Ferienhaus verfügt über zwei Bäder:
+                </p>
+                <button className="underline mt-4">Mehr lesen...</button>
+              </div>
+
+              <div className="">
+                <h2 className="text-3xl pt-8">Diese Ausstattung können wir bieten</h2>
+                <div className="grid grid-cols-4 grid-rows-3">
+
+                </div>
+              </div>
+
+
+            </div>
+            <div className="w-full h-[400px] flex flex-col sticky top-[100px] border border-black/20 rounded-xl p-4 shadow-gray-300 shadow-lg">
+              <p className="font-bold text-black text-3xl">ab 85€/Nacht</p>
+              <p className="text-gray-500 pb-5">inkl. MWSt.</p>
+              <a href="#contact" className="bg-blue-500 p-4 flex justify-center text-white rounded-xl text-xl">Reservieren</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 ">
+        <div className="max-w-[1100px] mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Was unsere Gäste sagen</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {reviews.map((review, index) => (
+              <div key={index} className="p-6 border rounded-lg shadow-md bg-white">
+                <div className="flex items-center mb-4">
+                  <h3 className="text-lg font-semibold">{review.name}</h3>
+                  <span className="ml-4 text-gray-500">{review.date}</span>
+                </div>
+                <div className="flex items-center mb-2">
+                  {/* Sterne-Bewertung */}
+                  {[...Array(review.rating)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 15.27L16.18 20l-1.64-7.03L20 8.24l-7.19-.61L10 1 7.19 7.63 0 8.24l5.46 4.73L3.82 20z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700">{review.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-20">
+        <div className="max-w-[1100px] mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Kontaktieren Sie uns</h2>
+          {submitted && <p className="mb-4 text-green-600 text-center">Vielen Dank für Ihre Nachricht!</p>}
+          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-Mail</label>
               <input
                 type="email"
                 id="email"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-                placeholder="mustername@mail.com"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
             </div>
-            <div>
-              <label className="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300">
-                Betreff
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="block p-3 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-indigo-500"
-                placeholder="Wie können wir helfen?"
-                required
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="block mb-2 text-md font-medium text-gray-900 dark:text-gray-400">
-                Ihre Nachricht
-              </label>
+            <div className="mb-4">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Nachricht</label>
               <textarea
                 id="message"
-                className="block p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Schreiben Sie eine Nachricht..."
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 required
-                
-              ></textarea>
+                rows={4}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
             </div>
-            <button
-              data-aos="fade-right"
-              type="submit"
-              className="shadow-md shadow-gray-500 py-3 px-5 text-md font-medium text-center text-white bg-blue-700 rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-
-            >
-              Nachricht senden
+            <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">
+              Absenden
             </button>
           </form>
+          <div className="mt-10 text-center">
+            <h3 className="text-xl font-bold">Kontaktinformationen</h3>
+            <p className="text-gray-600">Telefon: +49 123 456 7890</p>
+            <p className="text-gray-600">E-Mail: info@example.com</p>
+            <p className="text-gray-600">Adresse: Musterstraße 1, 12345 Musterstadt</p>
+          </div>
         </div>
       </section>
+
 
       <footer className="bg-gray-800 shadow text-center">
         <ul className="pt-4">

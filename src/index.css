@@ -28,11 +28,12 @@
     @apply p-4 text-sm
   }
 
-  th{
+  th {
     @apply p-2 text-lg
   }
-  td{
-    @apply p-1  
+
+  td {
+    @apply p-1
   }
 
   h2 {
@@ -55,11 +56,9 @@ h4 {
   font-family: 'Playfair Display', serif;
 }
 
-
-section {
-  overflow: hidden;
+p {
+  font-size: 17px;
 }
-
 
 button:hover {
   border-color: #646cff;

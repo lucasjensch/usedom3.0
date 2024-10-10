@@ -10,7 +10,7 @@ function Navigation() {
   };
 
   return (
-    <div className="lg:bg-white w-full min-h-[50px] flex justify-between items-center absolute top-0 z-10 lg:shadow-lg lg:shadow-gray-400">
+    <div className="lg:bg-white w-full min-h-[50px] flex justify-between items-center  top-0 z-10 lg:shadow-lg lg:shadow-gray-400 fixed">
       <div className="flex items-center">
         <img
           src="../src/assets/logo_transparent.png"
@@ -49,13 +49,7 @@ function Navigation() {
             info@die-usedomperle.de
           </a>
         </div>
-        <div className="flex items-center px-6">
-          <AiFillPhone
-            size={20}
-            className="mr-2 text-blue-700"
-          ></AiFillPhone>
-          <p className="text-blue-700 hidden lg:block">0 1520/88 70 816</p>
-        </div>
+
       </div>
       {/* Hamburger Icon */}
       <div onClick={handleNav} className="lg:hidden z-10 fixed top-7 right-0">
@@ -107,13 +101,6 @@ function Navigation() {
               <a className="" href="mailto:info@die-usedomperle.de">
                 info@die-usedomperle.de
               </a>
-            </div>
-            <div className="flex items-center px-6">
-              <AiFillPhone
-                size={20}
-                className="mr-2 text-blue-700"
-              ></AiFillPhone>
-              <p>+49 (0) 1520 88 70 816</p>
             </div>
           </li>
         </ul>

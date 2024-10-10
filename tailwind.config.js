@@ -19,7 +19,7 @@ export default {
         'parallax': 'url("../src/assets/seebruecke-wallpaper.jpg")',
         'logo': 'url("../src/assets/logo.jpg")',
         'waves': 'url("../src/assets/waves.svg")',
-        'wallpaper': 'url("../src/assets/karlshagen.jpg")',
+        'wallpaper': 'url("../src/assets/Hintergrund_Haus.jpg")',
         'house': 'url("../src/assets/Haus_front.jpg")',
       }
     },

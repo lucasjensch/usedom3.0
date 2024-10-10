@@ -7,6 +7,10 @@ import Navigation from "./navigation";
 import Pricing from "./pricing";
 import "./App.css";
 import { button } from "@material-tailwind/react";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { addDays, differenceInDays } from 'date-fns';
+import BookingSection from "./BookingSection";
 
 function App() {
   useEffect(() => {
@@ -95,6 +99,7 @@ function App() {
     email: string;
     message: string;
   }
+
 
 
 
@@ -205,14 +210,18 @@ function App() {
       <section >
         <div className="max-w-[1100px] mx-auto pt-20" >
           <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
+          <div className="relative grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
             <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="" />
             <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="" />
             <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="" />
             <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="" />
             <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="" />
+            <div className="absolute bottom-0 right-0 flex bg-gray-200/80 items-center pl-2">
+              <img src="../src/assets/gallery_icon.png" alt="" className="w-6 h-6" />
+              <a href="../src/gallery.html" className="p-2">Alle Bilder öffnen</a>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen" id="about">
+          <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen gap-6" id="about">
             <div className="col-span-2 flex flex-col items-start">
               <h2 className="text-3xl">Exklusive Ausstattung für Ihren Traumurlaub.</h2>
               <p className="text-xl">Platz für 6 Gäste, 3 Schlafzimmer, 3 Bäder</p>
@@ -303,11 +312,13 @@ function App() {
 
               </div>
             </div>
-            <div className="w-full h-[400px] flex flex-col sticky top-[100px] border border-black/20 rounded-xl p-4 shadow-gray-300 shadow-lg">
-              <p className="font-bold text-black text-3xl">ab 90€/Nacht</p>
+            <BookingSection></BookingSection>
+            {/* <div className="w-full h-[400px] flex flex-col sticky top-[100px] border border-black/20 rounded-xl p-4 shadow-gray-300 shadow-lg">
+              <p className="font-bold text-black text-3xl pt-4">ab 90€/Nacht</p>
               <p className="text-gray-500 pb-5">inkl. MWSt.</p>
-              <a href="#contact" className="bg-blue-500 p-4 flex justify-center text-white rounded-xl text-xl">Reservieren</a>
-            </div>
+              <p className="text-gray-500 pb-10 pt-5"> Buchen Sie jetzt und genießen Sie Ihren Aufenthalt in unserem gemütlichen Ferienhaus mit toller Ausstattung.</p>
+              <a href="#contact" className="bg-blue-500 p-4 flex justify-center text-white rounded-xl text-xl hover:bg-blue-700">Reservieren</a>
+            </div> */}
           </div>
         </div>
       </section>
@@ -462,7 +473,7 @@ function App() {
           <span className="text-sm text-gray-100 sm:text-center dark:text-gray-400">
             © 2023{" "}
             <a
-              href="https://aecht.media"
+              href="https://ächt.media"
               target="_blank"
               className="hover:none text-white font-extrabold"
             >

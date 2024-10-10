@@ -276,7 +276,7 @@ function App() {
       </section>
 
 
-      <section className="py-20">
+      <section className="py-20" id="contact">
         <div className="max-w-[1100px] mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Kontaktieren Sie uns</h2>
           {submitted && <p className="mb-4 text-green-600 text-center">Vielen Dank für Ihre Nachricht!</p>}

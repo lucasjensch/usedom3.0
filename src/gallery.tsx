@@ -1,163 +1,102 @@
-import { url } from "inspector";
 import React, { useState } from "react";
 
-interface GalleryProps {
-  images: string[]
-}
+type Image = {
+  src: string;
+  alt: string;
+};
 
+const images: Image[] = [
+  { src: "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png", alt: "Bild 1" },
+  { src: "../src/assets/neue Bilder Usedomperle/1OG_Sauna.png", alt: "Bild 2" },
+  { src: "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png", alt: "Bild 3" },
+  { src: "../src/assets/neue Bilder Usedomperle/EG_Bad_2.png", alt: "Bild 4" },
+];
 
+const Gallery: React.FC = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-function Gallery({ images }: GalleryProps) {
-  const [popupGallery, setPopupGallery] = useState(false);
-  const handleGallery = () => {
-    setPopupGallery(!popupGallery);
+  const openModal = (index: number) => {
+    setSelectedIndex(index);
   };
 
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  const closeModal = () => {
+    setSelectedIndex(null);
   };
 
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+  const showPreviousImage = () => {
+    if (selectedIndex !== null && selectedIndex > 0) {
+      setSelectedIndex(selectedIndex - 1);
+    }
+  };
+
+  const showNextImage = () => {
+    if (selectedIndex !== null && selectedIndex < images.length - 1) {
+      setSelectedIndex(selectedIndex + 1);
+    }
   };
 
   return (
-    <>
-      <div id="fotos" className="max-w-[1140px] w-full m-auto p-4 py-6">
-        <div className="flex flex-col items-center">
-          <h2 className="pt-2 text-3xl md:text-5xl tracking-tight font-extrabold text-center text-black dark:text-black">
-            Fotos
-          </h2>
-          <p className="py-6 lg:mb-16 font-light text-center px-4 text-gray-500 dark:text-gray-400 sm:text-xl">
-            Wir überzeugen mit einer raffinierten und eleganten Einrichtung, die
-            Gemütlichkeit verspricht. Die voll ausgestattete Küche und das
-            stilvolle Wohnzimmer sind das Highlight des Hauses.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-5 gap-4">
-          <div className="md:col-span-3 col-span-2 row-span-2 ">
-            <button className="h-full" onClick={handleGallery}>
-              <img
-                className="w-full h-full object-cover rounded-lg shadow-lg shadow-gray-400"
-                src="../src/assets/Hintergrund_Haus.jpg"
-                alt=""
-              />
-            </button>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4 text-center">Galerie</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {images.map((image, index) => (
+          <div key={index} className="relative">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="max-h-[400px] cursor-pointer"
+              onClick={() => openModal(index)}
+            />
           </div>
-          <div>
-            <button className="h-full" onClick={handleGallery}>
-              <img
-                className="w-full h-full object-cover rounded-lg shadow-lg shadow-gray-400"
-                src="../src/assets/neue Bilder Usedomperle/Couch.png"
-                alt=""
-              />
-            </button>
-          </div>
-          <div>
-            <button className="h-full" onClick={handleGallery}>
-              <img
-                className="w-full h-full object-cover rounded-lg shadow-lg shadow-gray-400"
-                src="../src/assets/neue Bilder Usedomperle/Schlafzimmer1.png"
-                alt=""
-              />
-            </button>
-          </div>
-          <div>
-            <button className="h-full" onClick={handleGallery}>
-              <img
-                className="w-full h-full object-cover rounded-lg shadow-lg shadow-gray-400"
-                src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png"
-                alt=""
-              />
-            </button>
-          </div>
-          <div>
-            <button className="h-full" onClick={handleGallery}>
-              <img
-                className="w-full h-full object-cover rounded-lg shadow-lg shadow-gray-400"
-                src="../src/assets/neue Bilder Usedomperle/Schlafzimmer2.png"
-                alt=""
-              />
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {popupGallery ? (
-        <div className="h-screen flex justify-center items-center bg-black/50 z-50 fixed top-0 left-0 w-screen">
-          <div className="flex bg-gray-100 h-4/5 w-11/12 rounded-xl relative">
+      {/* Modal */}
+      {selectedIndex !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative bg-white p-4 rounded-lg shadow-lg max-w-3xl mx-auto">
             <button
-              onClick={handleGallery}
-              className="absolute top-0 right-0 m-4 z-50"
+              onClick={closeModal}
+              className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-800 text-3xl"
             >
-              <img className="w-12" src="../src/assets/icon-close.svg" alt="" />
+              &times;
             </button>
-            <div className=" w-full h-full relative">
+
+            {/* Image Display */}
+            <img
+              src={images[selectedIndex].src}
+              alt={images[selectedIndex].alt}
+              className="w-full max-h-[600px]"
+            />
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-between mt-4">
               <button
-                type="button"
-                className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev
-                onClick={prevImage}
+                onClick={showPreviousImage}
+                className={`px-4 py-2 bg-gray-100 text-white rounded-lg ${
+                  selectedIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={selectedIndex === 0}
               >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                  <svg
-                    className="w-4 h-4 text-black dark:text-gray-800 rtl:rotate-180"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 1 1 5l4 4"
-                    />
-                  </svg>
-                  <span className="sr-only">Previous</span>
-                </span>
+                <img className="w-6 h-6" src="../src/assets/arrow-left.svg" alt="" />
               </button>
               <button
-                type="button"
-                className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next
-                onClick={nextImage}
+                onClick={showNextImage}
+                className={`px-4 py-2 bg-gray-100 text-white rounded-lg ${
+                  selectedIndex === images.length - 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+                disabled={selectedIndex === images.length - 1}
               >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                  <svg
-                    className="w-4 h-4 text-black dark:text-gray-800 rtl:rotate-180"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <span className="sr-only">Next</span>
-                </span>
+               <img className="w-6 h-6" src="../src/assets/arrow-right.svg" alt="" />
               </button>
-              <div className="h-full flex justify-center w-full">
-                <img src={images[currentIndex]} alt="" />
-              </div>
             </div>
           </div>
         </div>
-      ) : null}
-    </>
+      )}
+    </div>
   );
-}
+};
 
 export default Gallery;

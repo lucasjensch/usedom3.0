@@ -1,102 +1,106 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-type Image = {
-  src: string;
-  alt: string;
-};
-
-const images: Image[] = [
-  { src: "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png", alt: "Bild 1" },
-  { src: "../src/assets/neue Bilder Usedomperle/1OG_Sauna.png", alt: "Bild 2" },
-  { src: "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png", alt: "Bild 3" },
-  { src: "../src/assets/neue Bilder Usedomperle/EG_Bad_2.png", alt: "Bild 4" },
+// Galerie-URLs als konstante Liste
+const imageUrls: string[] = [
+  "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
+  "../src/assets/neue Bilder Usedomperle/Schuppen.png",
+  "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
+  "../src/assets/neue Bilder Usedomperle/Usedomperle-outdoor.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Bad.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Bad_2.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Tisch.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Couch.png",
+  "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Bett1.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Bad.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Bad2.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Sauna.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Flur.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Schlaf.png",
+  "../src/assets/neue Bilder Usedomperle/1OG_Schlaf2.png",
+  "../src/assets/neue Bilder Usedomperle/Schlafzimmer3.png",
+  "../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png",
+  "../src/assets/neue Bilder Usedomperle/2OG_Schuppen.png",
 ];
 
-const Gallery: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+// Typen für Props der GalleryPopup-Komponente definieren
+interface GalleryPopupProps {
+  images: string[]; // Array von Bild-URLs
+  isOpen: boolean;  // Ob die Galerie geöffnet ist
+  onClose: () => void; // Funktion zum Schließen der Galerie
+}
 
-  const openModal = (index: number) => {
-    setSelectedIndex(index);
+// Galerie-Popup-Komponente
+const GalleryPopup: React.FC<GalleryPopupProps> = ({ images, isOpen, onClose }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  const closeModal = () => {
-    setSelectedIndex(null);
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  const showPreviousImage = () => {
-    if (selectedIndex !== null && selectedIndex > 0) {
-      setSelectedIndex(selectedIndex - 1);
-    }
-  };
-
-  const showNextImage = () => {
-    if (selectedIndex !== null && selectedIndex < images.length - 1) {
-      setSelectedIndex(selectedIndex + 1);
-    }
-  };
+  if (!isOpen) return null;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center">Galerie</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {images.map((image, index) => (
-          <div key={index} className="relative">
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="max-h-[400px] cursor-pointer"
-              onClick={() => openModal(index)}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Modal */}
-      {selectedIndex !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="relative bg-white p-4 rounded-lg shadow-lg max-w-3xl mx-auto">
-            <button
-              onClick={closeModal}
-              className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-800 text-3xl"
-            >
-              &times;
-            </button>
-
-            {/* Image Display */}
-            <img
-              src={images[selectedIndex].src}
-              alt={images[selectedIndex].alt}
-              className="w-full max-h-[600px]"
-            />
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between mt-4">
-              <button
-                onClick={showPreviousImage}
-                className={`px-4 py-2 bg-gray-100 text-white rounded-lg ${
-                  selectedIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                disabled={selectedIndex === 0}
-              >
-                <img className="w-6 h-6" src="../src/assets/arrow-left.svg" alt="" />
-              </button>
-              <button
-                onClick={showNextImage}
-                className={`px-4 py-2 bg-gray-100 text-white rounded-lg ${
-                  selectedIndex === images.length - 1
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
-                }`}
-                disabled={selectedIndex === images.length - 1}
-              >
-               <img className="w-6 h-6" src="../src/assets/arrow-right.svg" alt="" />
-              </button>
-            </div>
-          </div>
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div className="relative">
+        <button className="absolute top-2 right-2 text-white" onClick={onClose}>
+          ✖️
+        </button>
+        <img
+          src={images[currentIndex]}
+          alt={`Bild ${currentIndex + 1}`}
+          className="max-w-full max-h-[90vh]"
+        />
+        <div className="flex justify-between mt-4">
+          <button onClick={handlePrev} className="text-white px-4 py-2 bg-gray-700">
+            Vorheriges Bild
+          </button>
+          <button onClick={handleNext} className="text-white px-4 py-2 bg-gray-700">
+            Nächstes Bild
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default Gallery;
+// Hauptkomponente
+const GalleryContainer: React.FC = () => {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
+  const openGallery = () => {
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+  };
+
+  return (
+    <div className="relative grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
+      <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="Couch mit Fernseher" />
+      <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="Bett" />
+      <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="Lampe Dachgeschoss" />
+      <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="Hintergrund Haus" />
+      <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="Haus Terrasse" />
+
+      {/* Button zum Öffnen der Galerie */}
+      <div className="absolute bottom-0 right-0 flex bg-gray-200/80 items-center">
+        <button onClick={openGallery} className="p-2">
+          Alle Bilder öffnen
+        </button>
+      </div>
+
+      {/* Popup-Galerie */}
+      <GalleryPopup images={imageUrls} isOpen={isGalleryOpen} onClose={closeGallery} />
+    </div>
+  );
+};
+
+export default GalleryContainer;

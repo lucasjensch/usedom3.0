@@ -99,8 +99,8 @@ const BookingSection = () => {
 
                     {/* Zeige den berechneten Preis */}
                     <div className="mt-4">
-                        <p className="text-2xl font-bold">
-                            Gesamtpreis: {totalPrice > 0 ? `${totalPrice}€` : 'Bitte wählen Sie An- und Abreisedaten'}
+                        <p className="text-xl font-bold">
+                            Gesamtpreis: {totalPrice > 0 ? `${totalPrice},00€` : 'Bitte wählen Sie An- und Abreisedaten'}
                         </p>
                     </div>
 

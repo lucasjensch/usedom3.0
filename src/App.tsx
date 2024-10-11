@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useRef } from "react";
-import Gallery from "./gallery";
+import GalleryContainer from "./gallery";
 import Navigation from "./navigation";
 import Pricing from "./pricing";
 import "./App.css";
@@ -210,17 +210,7 @@ function App() {
       <section >
         <div className="max-w-[1100px] mx-auto pt-20" >
           <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
-          <div className="relative grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
-            <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="" />
-            <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="" />
-            <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="" />
-            <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="" />
-            <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="" />
-            <div className="absolute bottom-0 right-0 flex bg-gray-200/80 items-center pl-2">
-              <img src="../src/assets/gallery_icon.png" alt="" className="w-6 h-6" />
-              <a href="../src/gallery.html" className="p-2">Alle Bilder öffnen</a>
-            </div>
-          </div>
+          <GalleryContainer></GalleryContainer>
           <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen gap-6" id="about">
             <div className="col-span-2 flex flex-col items-start">
               <h2 className="text-3xl">Exklusive Ausstattung für Ihren Traumurlaub.</h2>
@@ -305,8 +295,42 @@ function App() {
                 )}
                 <div className="">
                   <h2 className="text-3xl pt-8">Diese Ausstattung können wir bieten</h2>
-                  <div className="grid grid-cols-4 grid-rows-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-8">
 
+                    <div className="flex items-center">
+                      <img src="../src/assets/waschmachine_icon.webp" alt="Waschmaschine" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Waschmaschine</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/fernseher-icon.png" alt="Fernseher" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Fernseher</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/wifi-logo.svg" alt="WLAN" className="h-6 w-6  mr-2" />
+                      <p className="text-lg font-semibold">WLAN</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/strandkorb-icon.png" alt="Strandkorb" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Strandkorb</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/car_side_icon_135816.png" alt="Parkplatz" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Parkplatz</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/küche_icon.png" alt="Küche" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Ausgestattete Küche</p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img src="../src/assets/sauna-icon.png" alt="Sauna" className="h-8 w-8  mr-2" />
+                      <p className="text-lg font-semibold">Sauna</p>
+                    </div>
                   </div>
                 </div>
 
@@ -347,9 +371,24 @@ function App() {
         </div>
       </section>
 
+      <section className=" py-16">
+        <div className="max-w-[1100px] mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Entdecken Sie unser Ferienhaus</h2>
+          <div className="relative pb-9/16 overflow-hidden">
+            <video
+              className="top-0 left-0 w-full h-full rounded-xl"
+              src="/Videos/Usedomperle.mp4" // Hier den richtigen Pfad zum Video einfügen
+              title="Ferienhaus Video"
+              controls // Fügt die Standard-Steuerelemente hinzu (Play, Pause, etc.)
+              loop // Optional: Wiederholung des Videos nach dem Ende
+              muted // Optional: Startet das Video ohne Ton
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="py-20" id="contact">
-        <div className="max-w-[1100px] mx-auto px-4">
+        <div className="max-w-[1100px] mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">Kontaktieren Sie uns</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Information */}

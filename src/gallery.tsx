@@ -48,8 +48,8 @@ const GalleryPopup: React.FC<GalleryPopupProps> = ({ images, isOpen, onClose }) 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-      <div className="relative">
-        <button className="absolute top-2 right-2 text-white" onClick={onClose}>
+      <div className="relative" >
+        <button className="absolute top-2 right-2 text-white z-10" onClick={onClose}>
           ✖️
         </button>
         <img
@@ -65,7 +65,7 @@ const GalleryPopup: React.FC<GalleryPopupProps> = ({ images, isOpen, onClose }) 
             Nächstes Bild
           </button>
         </div>
-      </div>
+      </div >
     </div>
   );
 };
@@ -74,32 +74,37 @@ const GalleryPopup: React.FC<GalleryPopupProps> = ({ images, isOpen, onClose }) 
 const GalleryContainer: React.FC = () => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
-  const openGallery = () => {
-    setIsGalleryOpen(true);
-  };
-
-  const closeGallery = () => {
-    setIsGalleryOpen(false);
-  };
+  const toggleGallery = () => {
+    setIsGalleryOpen(!isGalleryOpen);
+  }
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
-      <img className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="Couch mit Fernseher" />
-      <img src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="Bett" />
-      <img src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="Lampe Dachgeschoss" />
-      <img className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="Hintergrund Haus" />
-      <img className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="Haus Terrasse" />
+    <>
+      <div className="">
 
-      {/* Button zum Öffnen der Galerie */}
-      <div className="absolute bottom-0 right-0 flex bg-gray-200/80 items-center">
-        <button onClick={openGallery} className="p-2">
-          Alle Bilder öffnen
-        </button>
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-4 gap-4">
+          <img onClick={toggleGallery} className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="Couch mit Fernseher" />
+          <img onClick={toggleGallery} src="../src/assets/neue Bilder Usedomperle/1OG_Bett1.png" alt="Bett" />
+          <img onClick={toggleGallery} src="../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png" alt="Lampe Dachgeschoss" />
+          <img onClick={toggleGallery} className="-mt-[5px]" src="../src/assets/Hintergrund_Haus.jpg" alt="Hintergrund Haus" />
+          <img onClick={toggleGallery} className="-mt-[5px]" src="../src/assets/Haus_Terrasse_3.jpg" alt="Haus Terrasse" />
+
+          {/* Button zum Öffnen der Galerie */}
+          <div className="absolute bottom-0 right-0 flex bg-gray-200/80 items-center">
+            <button onClick={toggleGallery} className="p-2">
+              Alle Bilder öffnen
+            </button>
+          </div>
+
+          {/* Popup-Galerie */}
+          <GalleryPopup images={imageUrls} isOpen={isGalleryOpen} onClose={toggleGallery} />
+        </div>
+
+
       </div>
 
-      {/* Popup-Galerie */}
-      <GalleryPopup images={imageUrls} isOpen={isGalleryOpen} onClose={closeGallery} />
-    </div>
+    </>
+
   );
 };
 

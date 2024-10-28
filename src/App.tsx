@@ -11,6 +11,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { addDays, differenceInDays } from 'date-fns';
 import BookingSection from "./BookingSection";
+import BookingWidget from "./BookingWidget";
+import BookingSection2 from "./BookingSection";
 
 function App() {
   useEffect(() => {
@@ -200,9 +202,9 @@ function App() {
 
       <Navigation></Navigation>
 
-      <section>
+      <section id="herosection">
         <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center">
-          <h1 className="text-9xl text-white font-extrabold">Die Usedomperle</h1>
+          <h1 className="text-5xl lg:text-9xl text-white font-extrabold">Die Usedomperle</h1>
           <p className="text-white text-2xl pt-5">Ihr exklusives Ferienhaus direkt am Strand.</p>
         </div>
       </section>
@@ -211,8 +213,10 @@ function App() {
         <div className="max-w-[1100px] mx-auto pt-20" >
           <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
           <GalleryContainer></GalleryContainer>
-          <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen gap-6" id="about">
-            <div className="col-span-2 flex flex-col items-start">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 pt-24 min-h-screen gap-6 relative" id="about">
+
+            <div className="col-span-2 flex flex-col items-start order-2 md:order-1">
               <h2 className="text-3xl">Exklusive Ausstattung für Ihren Traumurlaub.</h2>
               <p className="text-xl">Platz für 6 Gäste, 3 Schlafzimmer, 3 Bäder</p>
 
@@ -245,7 +249,7 @@ function App() {
                     <p className="ml-12">Kostenloses WLAN, Smart-TV, BlueRay-Player, etc.</p>
                   </div>
                 </div>
-                <div className="w-[90%] border-b border-black/20 pb-5">
+                <div className="w-full md:w-[90%] border-b border-black/20 pb-5">
                   <p>Von Mai bis September steht Ihnen ein Strandkorb am Strand zur Verfügung, um entspannte Tage in der Sonne zu genießen. Das Ferienhaus ist für die Belegung von maximal 6 Personen ausgelegt, wobei Kleinkinder als Personen zählen. Es sind weitere Aufbettungen gegen Aufpreis möglich.
                     Haustiere sind in diesem Haus nicht gestattet. Die Wohn- und Nutzfläche beträgt ca. 100 m² und bietet Ihnen eine komfortable Fußbodenheizung im gesamten Haus.
                     Im ersten Obergeschoss befinden sich zwei Schlafzimmer mit Betten in der Größe von 1,80 m x 2 m. Im zweiten Obergeschoss gibt es ein weiteres Schlafzimmer mit einem Bett derselben Größe.
@@ -336,13 +340,9 @@ function App() {
 
               </div>
             </div>
-            <BookingSection></BookingSection>
-            {/* <div className="w-full h-[400px] flex flex-col sticky top-[100px] border border-black/20 rounded-xl p-4 shadow-gray-300 shadow-lg">
-              <p className="font-bold text-black text-3xl pt-4">ab 90€/Nacht</p>
-              <p className="text-gray-500 pb-5">inkl. MWSt.</p>
-              <p className="text-gray-500 pb-10 pt-5"> Buchen Sie jetzt und genießen Sie Ihren Aufenthalt in unserem gemütlichen Ferienhaus mit toller Ausstattung.</p>
-              <a href="#contact" className="bg-blue-500 p-4 flex justify-center text-white rounded-xl text-xl hover:bg-blue-700">Reservieren</a>
-            </div> */}
+            <div className="bg-transparent order-1 md:order-2 w-full max-h-[600px] flex flex-col md:sticky top-[100px] rounded-xl">
+              <BookingSection></BookingSection>
+            </div>
           </div>
         </div>
       </section>
@@ -390,9 +390,9 @@ function App() {
       <section className="py-20" id="contact">
         <div className="max-w-[1100px] mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">Kontaktieren Sie uns</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1">
             {/* Contact Information */}
-            <div className="bg-white p-8 rounded-lg shadow-md flex flex-col justify-top">
+            <div className="bg-white p-8 rounded-lg shadow-md flex flex-col justify-top max-w-[600px] mx-auto">
               <img className="max-h-[220px] w-auto" src="../src/assets/karlshagen_overhead.jpg" alt="" />
 
               <h3 className="text-2xl font-semibold mb-4 mt-6">Kontaktinformationen</h3>
@@ -405,78 +405,7 @@ function App() {
               <p className="text-gray-700 mb-2">
                 <strong>Adresse:</strong> Kiefernweg 9, 17449 Peenemünde (Dünenresidenz Karlshagen)
               </p>
-
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              {submitted && (
-                <p className="mb-4 text-blue-500 text-center">
-                  Vielen Dank für Ihre Nachricht!
-                </p>
-              )}
-              <form
-                onSubmit={handleSubmit}
-                className="bg-white p-8 rounded-lg shadow-md"
-              >
-                <div className="mb-6">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
-                  />
-                </div>
-                <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    E-Mail
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
-                  />
-                </div>
-                <div className="mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Nachricht
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring focus:ring-blue-200"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition"
-                >
-                  Absenden
-                </button>
-              </form>
+              <a href="mailto:info@die-usedomperle.de" className="bg-blue-700 text-white p-4 rounded-xl text-xl text-center hover:bg-blue-500">Kontaktieren Sie uns</a>
             </div>
           </div>
         </div>

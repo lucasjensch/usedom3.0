@@ -57,6 +57,10 @@ p {
   font-size: 17px;
 }
 
+section:not(#herosection, #widget) {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -77,4 +81,11 @@ p {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 480px) {
+  section:not(#herosection, #widget) {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }

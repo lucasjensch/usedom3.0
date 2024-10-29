@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // Galerie-URLs als konstante Liste
 const imageUrls: string[] = [
+  "../src/assets/Hintergrund_Haus.jpg",
   "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
   "../src/assets/neue Bilder Usedomperle/Schuppen.png",
   "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
@@ -11,6 +12,7 @@ const imageUrls: string[] = [
   "../src/assets/neue Bilder Usedomperle/EG_Tisch.png",
   "../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png",
   "../src/assets/neue Bilder Usedomperle/EG_Couch.png",
+  "../src/assets/neue Bilder Usedomperle/Sekt.png",
   "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png",
   "../src/assets/neue Bilder Usedomperle/1OG_Bett1.png",
   "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png",
@@ -80,7 +82,7 @@ const GalleryContainer: React.FC = () => {
 
   return (
     <>
-      <div className="">
+      <div className="" >
 
         <div className="relative grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-4 gap-4">
           <img onClick={toggleGallery} className="row-span-2 col-span-2" src="../src/assets/couch_fernseher.jpg" alt="Couch mit Fernseher" />

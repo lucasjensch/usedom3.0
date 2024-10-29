@@ -51,13 +51,14 @@ h2,
 h3,
 h4 {
   font-family: 'Playfair Display', serif;
+  font-weight: 800;
 }
 
 p {
   font-size: 17px;
 }
 
-section:not(#herosection, #widget) {
+section:not(#herosection, #widget, ) {
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -84,7 +85,7 @@ section:not(#herosection, #widget) {
 }
 
 @media (max-width: 480px) {
-  section:not(#herosection, #widget) {
+  section:not(#herosection, #widget, ) {
     padding-left: 8px;
     padding-right: 8px;
   }

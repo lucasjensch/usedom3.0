@@ -94,6 +94,18 @@ function App() {
       content: "Sehr gut ausgestattete DH Hälfte in einer ruhigen und schönen Lage, sehr gute Raumaufteilung mit viel Licht (Ende September!). Es hat uns an nichts gemangelt. Moskitonetze im DG und Dachstudio sind vorhanden. Ein Babybett und -Stuhl haben wir ebenfalls genutzt.",
       rating: 5,
     },
+    {
+      name: "Rico",
+      date: "Januar 2017",
+      content: "Preis-Leistung waren sehr gut, der Kontakt zum Vermieter korrekt und unkompliziert.Das Haus selber ist sauber und ordentlich, die Einrichtung zweckmäßig für ein Ferienhaus. Wir haben nichts vermißt, außer vielleicht mehr Parkmöglichkeiten am Haus.Sehr zu empfehlen.",
+      rating: 5,
+    },
+    {
+      name: "Robert B.",
+      date: "Juni 2016",
+      content: "Die Lage des Haus ist traumhaft. Man läuft 3 Minuten zum weißen Sandstrand. Das Haus ist umgeben von Ferienhäusern und trotzdem bekommt man von den Nachbarn nichts mit. Man hat also seine Ruhe und kann richtig schön abschalten.",
+      rating: 5,
+    },
   ];
 
   interface ContactFormData {
@@ -150,6 +162,7 @@ function App() {
   const [FAQ1, setFAQ1] = useState(false);
 
   const imageUrls = [
+    "../src/assets/Hintergrund_Haus.jpg",
     "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
     "../src/assets/neue Bilder Usedomperle/Schuppen.png",
     "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
@@ -159,6 +172,7 @@ function App() {
     "../src/assets/neue Bilder Usedomperle/EG_Tisch.png",
     "../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png",
     "../src/assets/neue Bilder Usedomperle/EG_Couch.png",
+    "../src/assets/neue Bilder Usedomperle/Sekt.png",
     "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png",
     "../src/assets/neue Bilder Usedomperle/1OG_Bett1.png",
     "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png",
@@ -205,7 +219,7 @@ function App() {
       <section id="herosection">
         <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center">
           <h1 className="text-5xl lg:text-9xl text-white font-extrabold">Die Usedomperle</h1>
-          <p className="text-white text-2xl pt-5">Ihr exklusives Ferienhaus direkt am Strand.</p>
+          <p className="text-white text-2xl pt-5" id="gallery">Ihr exklusives Ferienhaus direkt am Strand.</p>
         </div>
       </section>
 
@@ -377,7 +391,7 @@ function App() {
           <div className="relative pb-9/16 overflow-hidden">
             <video
               className="top-0 left-0 w-full h-full rounded-xl"
-              src="/Videos/Usedomperle.mp4" // Hier den richtigen Pfad zum Video einfügen
+              src="/Videos/Usedomperle-2.mp4" // Hier den richtigen Pfad zum Video einfügen
               title="Ferienhaus Video"
               controls // Fügt die Standard-Steuerelemente hinzu (Play, Pause, etc.)
               loop // Optional: Wiederholung des Videos nach dem Ende
@@ -389,66 +403,112 @@ function App() {
 
       <section className="py-20" id="contact">
         <div className="max-w-[1100px] mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Kontaktieren Sie uns</h2>
-          <div className="grid grid-cols-1">
-            {/* Contact Information */}
-            <div className="bg-white p-8 rounded-lg shadow-md flex flex-col justify-top max-w-[600px] mx-auto">
-              <img className="max-h-[220px] w-auto" src="../src/assets/karlshagen_overhead.jpg" alt="" />
+          <div className="bg-white space-y-6">
+            <h2 className="text-3xl font-bold">Wer Sie begrüßen wird</h2>
+            <div className="flex flex-col md:flex-row items-start md:space-x-6">
+              {/* Host Card */}
+              <div className="bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center w-full md:w-1/3 space-y-4">
+                <div className="relative w-16 h-16 bg-gray-700 text-white rounded-full flex items-center justify-center text-3xl font-semibold">
+                  MJ
+                  <span className="absolute bottom-0 right-0 bg-blue-700 text-white rounded-full p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-bold">Mario Jensch</h3>
+                  <p className="text-gray-500">Gastgeber</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 w-full text-center">
+                  <div>
+                    <p className="text-lg font-semibold">15</p>
+                    <p className="text-sm text-gray-500">Bewertungen</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold">4,8★</p>
+                    <p className="text-sm text-gray-500">Sternebewertung</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold">06.03.2012</p>
+                    <p className="text-sm text-gray-500">Gastgeber seit</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold">+491520 8870816</p>
+                    <p className="text-sm text-gray-500">Telefonnummer</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-lg font-semibold text-blue-700"><a href="mailto:info@die-usedomperle.de">info@die-usedomperle.de</a></p>
+                    <p className="text-sm text-gray-500">E-Mail Adresse</p>
+                  </div>
+                </div>
+              </div>
 
-              <h3 className="text-2xl font-semibold mb-4 mt-6">Kontaktinformationen</h3>
-              <p className="text-gray-700 mb-2">
-                <strong>Telefon:</strong> +49 1520 8870816
-              </p>
-              <p className="text-gray-700 mb-2">
-                <strong>E-Mail:</strong> info@die-usedomperle.de
-              </p>
-              <p className="text-gray-700 mb-2">
-                <strong>Adresse:</strong> Kiefernweg 9, 17449 Peenemünde (Dünenresidenz Karlshagen)
-              </p>
-              <a href="mailto:info@die-usedomperle.de" className="bg-blue-700 text-white p-4 rounded-xl text-xl text-center hover:bg-blue-500">Kontaktieren Sie uns</a>
+              {/* Host Info Section */}
+              <div className="flex flex-col space-y-4 w-full md:w-2/3">
+                <h3 className="text-lg font-semibold">Hierauf können Sie sich freuen</h3>
+                <p>Hier wartet die Usedomperle auf Sie – ein gemütliches Ferienhaus direkt am Strand. Perfekt für alle, die einfach mal die Seele baumeln lassen wollen. Strandspaziergänge, Meeresrauschen, frische Ostseeluft – das alles ist nur ein paar Schritte entfernt.</p>
+                <button className="bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold text-xl">
+                  Nachricht an Gastgeber
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
 
-      <footer className="bg-gray-800 shadow text-center">
-        <ul className="pt-4">
-          <li className="p-0">
-            <p className="text-gray-100 text-xs font-light">
-              Ferienhaus "Die Usedomperle"
-            </p>
-          </li>
-          <li className="p-0">
-            <p className="text-gray-100 text-xs font-light">
-              Kiefernweg 9, 17449 Peenemünde {"(Dünenresidenz Karlshagen)"}
-            </p>
-          </li>
-          <li className="p-0">
-            <p className="text-gray-100 text-xs font-light">01520-8870816</p>
-          </li>
-          <li className="p-0">
-            <a
-              href="mailto:info@die-usedomperle"
-              className="text-indigo-300 text-xs font-light"
-            >
-              info@die-usedomperle.de
-            </a>
-          </li>
-        </ul>
+      <footer className="bg-gray-900 text-gray-300 py-10">
+        <div className="container mx-auto px-6 pt-8 lg:px-8">
+          <div className="flex flex-wrap justify-between gap-8">
+            {/* Logo and Description */}
+            <div className="w-full sm:w-1/2 lg:w-1/4">
+              <img className="w-56" src="../src/assets/logo_transparent.png" alt="" />
+              <p className="text-gray-400">
+                Entspannt euch in unserem gemütlichen Ferienhaus direkt am Strand von Usedom.
+                Perfekt für eine Auszeit am Meer.
+              </p>
+            </div>
 
-        <div className="h-24 w-full mx-auto max-w-screen-xl p-4 flex items-end justify-center">
-          <span className="text-sm text-gray-100 sm:text-center dark:text-gray-400">
-            © 2023{" "}
-            <a
-              href="https://ächt.media"
-              target="_blank"
-              className="hover:none text-white font-extrabold"
-            >
-              ächtmedia™
-            </a>
-            . Alle Rechte vorbehalten.
-          </span>
+            {/* Links */}
+            <div className="w-full sm:w-1/2 lg:w-1/4">
+              <h4 className="text-lg font-semibold text-white mb-3">Nützliche Links</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Startseite</a></li>
+                <li><a href="#about" className="hover:text-white">Ausstattung</a></li>
+                <li><a href="#about" className="hover:text-white">Preise und Belegung</a></li>
+                <li><a href="#gallery" className="hover:text-white">Fotos</a></li>
+                <li><a href="#contact" className="hover:text-white">Kontakt</a></li>
+              </ul>
+            </div>
+
+
+            {/* Contact Information */}
+            <div className="w-full sm:w-1/2 lg:w-1/4">
+              <h4 className="text-lg font-semibold text-white mb-3">Kontakt</h4>
+              <ul className="space-y-2">
+                <li>Email: <a href="mailto:info@usedomperle.de" className="hover:text-white">info@usedomperle.de</a></li>
+                <li>Telefon: <a href="tel:+4915208870816" className="hover:text-white">+49 1520 887 081 6</a></li>
+                <li>Adresse: Kiefernweg 9 - 17449 Peenemünde (Dünenresidenz Karlshagen)</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="mt-8 border-t border-gray-700 pt-4 text-center text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} Usedomperle. Alle Rechte vorbehalten. | made by <a href="https://ächt.media">ächt media</a>
+          </div>
         </div>
       </footer>
     </>

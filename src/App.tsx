@@ -217,8 +217,8 @@ function App() {
       <Navigation></Navigation>
 
       <section id="herosection">
-        <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center">
-          <h1 className="text-5xl lg:text-9xl text-white font-extrabold">Die Usedomperle</h1>
+        <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center p-3">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-extrabold">Die Usedomperle</h1>
           <p className="text-white text-2xl pt-5" id="gallery">Ihr exklusives Ferienhaus direkt am Strand.</p>
         </div>
       </section>
@@ -404,8 +404,8 @@ function App() {
       <section className="py-20" id="contact">
         <div className="max-w-[1100px] mx-auto">
           <div className="bg-white space-y-6">
-            <h2 className="text-3xl font-bold">Wer Sie begrüßen wird</h2>
-            <div className="flex flex-col md:flex-row items-start md:space-x-6">
+            <h2 className="text-3xl font-bold">Kontaktieren Sie uns gern</h2>
+            <div className="flex flex-col md:flex-row items-start md:space-x-10">
               {/* Host Card */}
               <div className="bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center w-full md:w-1/3 space-y-4">
                 <div className="relative w-16 h-16 bg-gray-700 text-white rounded-full flex items-center justify-center text-3xl font-semibold">
@@ -456,8 +456,7 @@ function App() {
               </div>
 
               {/* Host Info Section */}
-              <div className="flex flex-col space-y-4 w-full md:w-2/3">
-                <h3 className="text-lg font-semibold">Hierauf können Sie sich freuen</h3>
+              <div className="flex flex-col space-y-4 w-full md:w-1/2 lg:w-3/4 mt-6 md:mt-0">
                 <p>Hier wartet die Usedomperle auf Sie – ein gemütliches Ferienhaus direkt am Strand. Perfekt für alle, die einfach mal die Seele baumeln lassen wollen. Strandspaziergänge, Meeresrauschen, frische Ostseeluft – das alles ist nur ein paar Schritte entfernt.</p>
                 <button className="bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold text-xl">
                   Nachricht an Gastgeber
@@ -476,14 +475,14 @@ function App() {
             <div className="w-full sm:w-1/2 lg:w-1/4">
               <img className="w-56" src="../src/assets/logo_transparent.png" alt="" />
               <p className="text-gray-400">
-                Entspannt euch in unserem gemütlichen Ferienhaus direkt am Strand von Usedom.
+                Entspannen Sie sich in unserem gemütlichen Ferienhaus direkt am Strand von Usedom.
                 Perfekt für eine Auszeit am Meer.
               </p>
             </div>
 
             {/* Links */}
             <div className="w-full sm:w-1/2 lg:w-1/4">
-              <h4 className="text-lg font-semibold text-white mb-3">Nützliche Links</h4>
+              <h4 className="text-lg font-semibold text-white mb-3">Navigation</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-white">Startseite</a></li>
                 <li><a href="#about" className="hover:text-white">Ausstattung</a></li>

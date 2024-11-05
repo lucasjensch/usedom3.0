@@ -10,7 +10,7 @@ function Navigation() {
   };
 
   return (
-    <div className="lg:bg-white w-full min-h-[50px] flex justify-between items-center  top-0 z-10 lg:shadow-lg lg:shadow-gray-400 fixed">
+    <div className="bg-white w-full min-h-[50px] flex justify-between items-center  top-0 z-10 lg:shadow-lg lg:shadow-gray-400 fixed">
       <div className="flex items-center">
         <img
           src="../src/assets/logo_transparent.png"
@@ -27,10 +27,10 @@ function Navigation() {
           <a href="#about">Ausstattung</a>
         </li>
         <li className="text-base">
-          <a href="#pricing">Preise und Belegung</a>
+          <a href="#about">Preise und Belegung</a>
         </li>
         <li className="text-base">
-          <a href="#fotos">Fotos</a>
+          <a href="#gallery">Fotos</a>
         </li>
         <li className="text-base">
           <a href="#contact">Kontakt</a>
@@ -52,7 +52,7 @@ function Navigation() {
 
       </div>
       {/* Hamburger Icon */}
-      <div onClick={handleNav} className="lg:hidden z-10 fixed top-7 right-0">
+      <div onClick={handleNav} className="lg:hidden z-10 fixed md:top-7 right-0">
         <FaBars
           size={25}
           className="mr-4 cursor-pointer text-black z-50"
@@ -64,7 +64,7 @@ function Navigation() {
         className={
           nav
             ? "fixed z-50 overlay-y-hidden lg:hidden duration-300 text-gray-800 left-0 top-0 h-screen w-full bg-white py-7 flex flex-col"
-            : "absolute top-0 h-screen left-[-100%] ease-out duration-500"
+            : "absolute top-0 h-screen left-[-120%] ease-out duration-500"
         }
       >
         <ul className="h-full w-full text-center items-center pt-12 flex flex-col">
@@ -84,10 +84,10 @@ function Navigation() {
             <a href="#about">Ausstattung</a>
           </li>
           <li className="text-2xl py-4 ">
-            <a href="#pricing">Preise und Belegung</a>
+            <a href="#about">Preise und Belegung</a>
           </li>
           <li className="text-2xl py-4 ">
-            <a href="#fotos">Fotos</a>
+            <a href="#gallery">Fotos</a>
           </li>
           <li className="text-2xl py-4 ">
             <a href="#contact">Kontakt</a>

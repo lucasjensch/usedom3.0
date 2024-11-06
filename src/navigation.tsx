@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { AiFillPhone, AiFillMail } from "react-icons/ai";
-import { useEffect } from "react";
+import { AiFillMail } from "react-icons/ai";
 
 function Navigation() {
   const [nav, setNav] = useState(false);

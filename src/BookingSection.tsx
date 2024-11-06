@@ -14,56 +14,85 @@ const PricePopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     };
 
     const prices2024 = (
-        <table className="border border-gray-200 text-center my-4 w-full shadow-sm rounded-lg overflow-hidden">
-            <caption className="text-2xl font-bold text-blue-700 mb-2 py-2">
+        <table className="border border-gray-300 text-center w-full shadow-md rounded-lg overflow-hidden">
+            <caption className="text-3xl font-semibold text-blue-800 py-4">
                 2024
                 <br />
-                <span className="text-sm font-normal text-gray-600">von Mai bis Sep. inkl. Strandkorb am Strand</span>
+                <span className="text-base font-normal text-gray-600">
+                    von Mai bis Sep. inkl. Strandkorb am Strand
+                </span>
             </caption>
             <thead>
-                <tr className="bg-blue-700 text-white">
-                    <th className="px-4 py-2 border-r border-gray-300">von</th>
-                    <th className="px-4 py-2 border-r border-gray-300">bis</th>
-                    <th className="px-4 py-2">pro Nacht</th>
+                <tr className="bg-blue-800 text-white text-lg">
+                    <th className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-300">Von</th>
+                    <th className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-300">Bis</th>
+                    <th className="px-2 py-2 sm:px-3 sm:py-3">Pro Nacht</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr><td>03.01.</td><td>28.01.</td><td>90,- €</td></tr>
-                <tr><td>28.01.</td><td>24.03.</td><td>95,- €</td></tr>
-                <tr><td>24.03.</td><td>28.04.</td><td>100,- €</td></tr>
-                <tr><td>28.04.</td><td>16.06.</td><td>140,- €</td></tr>
-                <tr><td>16.06.</td><td>01.09.</td><td>195,- €</td></tr>
-                <tr><td>01.09.</td><td>06.10.</td><td>140,- €</td></tr>
-                <tr><td>06.10.</td><td>03.11.</td><td>100,- €</td></tr>
-                <tr><td>03.11.</td><td>22.12.</td><td>90,- €</td></tr>
-                <tr><td>22.12.</td><td>05.01.2025</td><td>190,- €</td></tr>
+            <tbody className="text-gray-800 text-base">
+                {[
+                    ["03.01.", "28.01.", "90,- €"],
+                    ["28.01.", "24.03.", "95,- €"],
+                    ["24.03.", "28.04.", "100,- €"],
+                    ["28.04.", "16.06.", "140,- €"],
+                    ["16.06.", "01.09.", "195,- €"],
+                    ["01.09.", "06.10.", "140,- €"],
+                    ["06.10.", "03.11.", "100,- €"],
+                    ["03.11.", "22.12.", "90,- €"],
+                    ["22.12.", "05.01.2025", "190,- €"]
+                ].map((row, idx) => (
+                    <tr
+                        key={idx}
+                        className={`${idx % 2 === 0 ? "bg-gray-100" : "bg-white"
+                            } hover:bg-blue-50 transition-colors`}
+                    >
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-200">{row[0]}</td>
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-200">{row[1]}</td>
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 font-semibold text-blue-700">{row[2]}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
+
     );
 
     const prices2025 = (
-        <table className="border border-gray-200 text-center my-4 w-full shadow-sm rounded-lg overflow-hidden">
-            <caption className="text-2xl font-bold text-blue-700 mb-2 py-2">
+        <table className="border border-gray-300 text-center w-full shadow-md rounded-lg overflow-hidden">
+            <caption className="text-3xl font-semibold text-blue-800 py-4">
                 2025
                 <br />
-                <span className="text-sm font-normal text-gray-600">von Mai bis Sep. inkl. Strandkorb am Strand</span>
+                <span className="text-base font-normal text-gray-600">
+                    von Mai bis Sep. inkl. Strandkorb am Strand
+                </span>
             </caption>
             <thead>
-                <tr className="bg-blue-700 text-white">
-                    <th className="px-4 py-2 border-r border-gray-300">von</th>
-                    <th className="px-4 py-2 border-r border-gray-300">bis</th>
-                    <th className="px-4 py-2">pro Nacht</th>
+                <tr className="bg-blue-800 text-white text-lg">
+                    <th className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-300">Von</th>
+                    <th className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-300">Bis</th>
+                    <th className="px-2 py-2 sm:px-3 sm:py-3">Pro Nacht</th>
                 </tr>
             </thead>
-            <tbody className='border border-gray-300'>
-                <tr><td>05.01.</td><td>30.03.</td><td>100,- €</td></tr>
-                <tr><td>30.03.</td><td>27.04.</td><td>115,- €</td></tr>
-                <tr><td>27.04.</td><td>22.06.</td><td>150,- €</td></tr>
-                <tr><td>22.06.</td><td>14.09.</td><td>210,- €</td></tr>
-                <tr><td>14.09.</td><td>05.10.</td><td>150,- €</td></tr>
-                <tr><td>05.10.</td><td>02.11.</td><td>115,- €</td></tr>
-                <tr><td>02.11.</td><td>21.12.</td><td>100,- €</td></tr>
-                <tr><td>21.12.</td><td>04.01.2026</td><td>205,- €</td></tr>
+            <tbody className="text-gray-800 text-base">
+                {[
+                    ["05.01.", "30.03.", "100,- €"],
+                    ["30.03.", "27.04.", "115,- €"],
+                    ["27.04.", "22.06.", "150,- €"],
+                    ["22.06.", "14.09.", "210,- €"],
+                    ["14.09.", "05.10.", "150,- €"],
+                    ["05.10.", "02.11.", "115,- €"],
+                    ["02.11.", "21.12.", "100,- €"],
+                    ["21.12.", "04.01.2026", "205,- €"]
+                ].map((row, idx) => (
+                    <tr
+                        key={idx}
+                        className={`${idx % 2 === 0 ? "bg-gray-100" : "bg-white"
+                            } hover:bg-blue-50 transition-colors`}
+                    >
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-200">{row[0]}</td>
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 border-r border-gray-200">{row[1]}</td>
+                        <td className="px-2 py-2 sm:px-3 sm:py-3 font-semibold text-blue-700">{row[2]}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     );
@@ -109,10 +138,10 @@ const BookingSection = () => {
             <div className="flex flex-col sticky top-[100px] justify-center items-center w-full">
                 <div className="flex flex-col items-center bg-white lg:p-6 rounded-xl shadow-lg">
                     <BookingWidget></BookingWidget>
-                    <a href="anfrage.html" target='_blank' className="bg-blue-700 w-full p-4 flex justify-center text-white rounded-xl text-xl mt-5 mb-10">Reservierung anfragen</a>
+                    <a href="../pages/anfrage.html" target='_blank' className="bg-blue-700 w-full p-4 flex justify-center text-white rounded-xl text-xl mt-5 mb-10">Reservierung anfragen</a>
                     <div className="flex absolute justify-between gap-6 bottom-[15px]">
                         <button onClick={togglePopup} className="text-sm text-gray-500 hover:text-black">Preistabelle</button>
-                        <a href='datenschutz.html' className="text-sm text-gray-500 hover:text-black">Datenschutz</a>
+                        <a href='../pages/datenschutz.html' target='_blank' className="text-sm text-gray-500 hover:text-black">Datenschutz</a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 
 function Pricing() {
   const [priceTable2024, setPriceTable2024] = React.useState(false);
   const [priceTable2025, setPriceTable2025] = React.useState(false);
-  const [calendar, setCalendar] = React.useState(false);
+
 
   useEffect(() => {
     // Create the first script element

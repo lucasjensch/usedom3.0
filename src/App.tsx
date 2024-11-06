@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import GalleryContainer from "./gallery";
 import Navigation from "./navigation";
-import Pricing from "./pricing";
 import "./App.css";
-import { button } from "@material-tailwind/react";
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays, differenceInDays } from 'date-fns';
 import BookingSection from "./BookingSection";
-import BookingWidget from "./BookingWidget";
-import BookingSection2 from "./BookingSection";
+import ContactForm from "./contact-section";
+
 
 function App() {
   useEffect(() => {
@@ -108,30 +104,6 @@ function App() {
     },
   ];
 
-  interface ContactFormData {
-    name: string;
-    email: string;
-    message: string;
-  }
-
-
-
-
-  const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Hier könnte eine API-Anfrage erfolgen
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' }); // Zurücksetzen des Formulars
-  };
 
   const mybutton: ButtonElement | null =
     document.getElementById("btn-back-to-top");
@@ -158,34 +130,6 @@ function App() {
   mybutton?.addEventListener("click", backToTop);
 
   window.addEventListener("scroll", scrollFunction);
-
-  const [FAQ1, setFAQ1] = useState(false);
-
-  const imageUrls = [
-    "../src/assets/Hintergrund_Haus.jpg",
-    "../src/assets/neue Bilder Usedomperle/Eingangstür.png",
-    "../src/assets/neue Bilder Usedomperle/Schuppen.png",
-    "../src/assets/neue Bilder Usedomperle/Haus-Seitenprofil.png",
-    "../src/assets/neue Bilder Usedomperle/Usedomperle-outdoor.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Bad.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Bad_2.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Tisch.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Tisch_Bild.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Couch.png",
-    "../src/assets/neue Bilder Usedomperle/Sekt.png",
-    "../src/assets/neue Bilder Usedomperle/EG_Fernseher.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Bett1.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Bett2.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Bad.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Bad2.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Sauna.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Flur.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Schlaf.png",
-    "../src/assets/neue Bilder Usedomperle/1OG_Schlaf2.png",
-    "../src/assets/neue Bilder Usedomperle/Schlafzimmer3.png",
-    "../src/assets/neue Bilder Usedomperle/lampe_dachgeschoss.png",
-    "../src/assets/neue Bilder Usedomperle/2OG_Schuppen.png",
-  ]
 
 
 
@@ -404,10 +348,10 @@ function App() {
       <section className="py-20" id="contact">
         <div className="max-w-[1100px] mx-auto">
           <div className="bg-white space-y-6">
-            <h2 className="text-3xl font-bold">Kontaktieren Sie uns gern</h2>
-            <div className="flex flex-col md:flex-row items-start md:space-x-10">
+            <h2 className="text-4xl font-bold text-center">Kontaktieren Sie uns gern</h2>
+            <div className="flex flex-col md:flex-row items-start md:space-x-10 space-y-10 md:space-y-0">
               {/* Host Card */}
-              <div className="bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center w-full md:w-1/3 space-y-4">
+              <div className="bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center w-full space-y-4">
                 <div className="relative w-16 h-16 bg-gray-700 text-white rounded-full flex items-center justify-center text-3xl font-semibold">
                   MJ
                   <span className="absolute bottom-0 right-0 bg-blue-700 text-white rounded-full p-1">
@@ -454,14 +398,7 @@ function App() {
                   </div>
                 </div>
               </div>
-
-              {/* Host Info Section */}
-              <div className="flex flex-col space-y-4 w-full md:w-1/2 lg:w-3/4 mt-6 md:mt-0">
-                <p>Hier wartet die Usedomperle auf Sie – ein gemütliches Ferienhaus direkt am Strand. Perfekt für alle, die einfach mal die Seele baumeln lassen wollen. Strandspaziergänge, Meeresrauschen, frische Ostseeluft – das alles ist nur ein paar Schritte entfernt.</p>
-                <button className="bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold text-xl">
-                  Nachricht an Gastgeber
-                </button>
-              </div>
+              <ContactForm></ContactForm>
             </div>
           </div>
         </div>
@@ -489,6 +426,7 @@ function App() {
                 <li><a href="#about" className="hover:text-white">Preise und Belegung</a></li>
                 <li><a href="#gallery" className="hover:text-white">Fotos</a></li>
                 <li><a href="#contact" className="hover:text-white">Kontakt</a></li>
+                <li><a href="../pages/datenschutz.html" target="_blank" className="hover:text-white">Impressum</a></li>
               </ul>
             </div>
 

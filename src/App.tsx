@@ -161,14 +161,15 @@ function App() {
       <Navigation></Navigation>
 
       <section id="herosection">
-        <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-[80vh] bg-cover bg-center p-3">
+        <div className="flex flex-col justify-center items-center mx-auto bg-wallpaper min-h-screen md:min-h-[80vh] bg-cover bg-center p-3">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-extrabold">Die Usedomperle</h1>
           <p className="text-white text-2xl pt-5" id="gallery">Ihr exklusives Ferienhaus direkt am Strand.</p>
+          <a href="#about" className="bg-blue-700 w-[80%] py-4 flex justify-center text-white rounded-xl text-xl mt-10 absolute bottom-10 md:hidden">Jetzt buchen</a>
         </div>
       </section>
 
       <section >
-        <div className="max-w-[1100px] mx-auto pt-20" >
+        <div className="max-w-[1100px] mx-auto pt-5 md:pt-20" >
           <h2 className="text-3xl pb-10">Ihr exklusives Ferienhaus direkt in Karlshagen.</h2>
           <GalleryContainer></GalleryContainer>
 
